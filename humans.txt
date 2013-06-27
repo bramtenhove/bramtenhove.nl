@@ -1,0 +1,10 @@
+/* TEAM */
+  Chef: Bram ten Hove
+  Site: http://bramtenhove.nl
+  Twitter: @bramtenhove
+  Location: Hengelo, The Netherlands
+
+/* SITE */
+  HTML5, CSS3
+  jQuery, Modernizr
+

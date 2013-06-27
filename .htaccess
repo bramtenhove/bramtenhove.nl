@@ -5,11 +5,32 @@
 # No MultiViews
 Options -MultiViews
 
-# Don't show directory listings for URLs which map to a directory.
-Options -Indexes
-
 # Follow symbolic links in this directory.
 Options +FollowSymLinks
+
+# Block access to directories without a default document.
+<IfModule mod_autoindex.c>
+    Options -Indexes
+</IfModule>
+
+# Allow access from all domains for web fonts.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(eot|font.css|otf|ttc|ttf|woff)$">
+    Header set Access-Control-Allow-Origin "*"
+  </FilesMatch>
+</IfModule>
+
+# Force IE to render pages in the highest available mode in the various
+# cases when it may not: http://hsivonen.iki.fi/doctype/ie-mode.pdf.
+# Use, if installed, Google Chrome Frame.
+<IfModule mod_headers.c>
+    Header set X-UA-Compatible "IE=edge,chrome=1"
+    # `mod_headers` can't match based on the content-type, however, we only
+    # want to send this header for HTML pages and not for the other resources
+    <FilesMatch "\.(appcache|crx|css|eot|gif|htc|ico|jpe?g|js|m4a|m4v|manifest|mp4|oex|oga|ogg|ogv|otf|pdf|png|safariextz|svg|svgz|ttf|vcf|webapp|webm|webp|woff|xml|xpi)$">
+        Header unset X-UA-Compatible
+    </FilesMatch>
+</IfModule>
 
 # Various rewrite rules.
 <IfModule mod_rewrite.c>
@@ -24,6 +45,13 @@ Options +FollowSymLinks
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteRule ^([^\.]+)$ $1.php [NC,L]
 
+</IfModule>
+
+# Block access to hidden files and directories.
+<IfModule mod_rewrite.c>
+    RewriteCond %{SCRIPT_FILENAME} -d [OR]
+    RewriteCond %{SCRIPT_FILENAME} -f
+    RewriteRule "(^|/)\." - [F]
 </IfModule>
 
 <IfModule mod_gzip.c>
@@ -52,8 +80,4 @@ Header set Cache-Control "max-age=60, private, proxy-revalidate"
 </FilesMatch>
 
 # Error documents
-ErrorDocument 400 /errors/400.html
-ErrorDocument 401 /errors/401.html
-ErrorDocument 403 /errors/403.html
 ErrorDocument 404 /errors/404.html
-ErrorDocument 500 /errors/500.html

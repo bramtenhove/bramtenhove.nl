@@ -1,0 +1,65 @@
+/**
+ * Layout of the site is defined here.
+ */
+
+body {
+  background: $default-background url(../images/background.png) repeat;
+}
+
+.wrapper {
+  margin: 0 auto;
+  width: 960px;
+}
+
+.column {
+  @include container;
+}
+
+.container {
+}
+
+#header {
+  background: #ffffff;
+  position: relative;
+  z-index: 10;
+  @include box-shadow(rgba(#000000, 0.4) 0px 0px 15px 5px);
+
+  .navigation {
+    float: right;
+  }
+}
+
+#logo a {
+  background: url(../images/logo.png);
+  float: left;
+  height: 94px;
+  left: 15px;
+  position: relative;
+  width: 136px;
+
+  &:hover {
+    background: url(../images/logo-red.png);
+    @include transition-property(all);
+    @include transition-duration(350ms);
+    @include transition-timing-function(ease-in);
+  }
+}
+
+#expose {
+  border-bottom: 2px solid #dddddd;
+  min-height: 175px;
+  @include background(url(../images/noise.png), linear-gradient(left, #556270, #92a5ba));
+}
+
+#main {
+}
+
+#main-content {
+  background: pink;
+  @include span-columns(11, 16);
+}
+
+#sidebar-right {
+  @include span-columns(5 omega, 16);
+  background: yellow;
+}

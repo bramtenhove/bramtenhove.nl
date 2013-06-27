@@ -1,0 +1,31 @@
+/**
+ * Any defaults that should be used across all of the stylesheets.
+ */
+
+$default-background: #eeeeee;
+$default-link-color: #f44e4e;
+
+$total-columns: 16;
+$column-width: 3.75em;
+$gutter-width: 5em;
+$grid-padding: 1.875em;
+
+/**
+ * Clearfix.
+ */
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+/**
+ * For IE 6/7 only, include this rule to trigger hasLayout and contain floats.
+ */
+.clearfix {
+  *zoom: 1;
+}

@@ -1,0 +1,24 @@
+/**
+ * Navigation of the site is defined here.
+ */
+
+#main-menu {
+
+  ul.menu {
+
+    li {
+      float: left;
+
+      a {
+        display: block;
+        height: 96px;
+        line-height: 96px;
+        padding: 0 30px;
+
+        &.active, &:active, &:hover {
+          border-bottom: 4px solid $default-link-color;
+        }
+      }
+    }
+  }
+}
