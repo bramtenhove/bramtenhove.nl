@@ -1,3 +1,4 @@
+@import url("http://fonts.googleapis.com/css?family=Oswald:400,300,700");
 /* Welcome to Compass.
  * In this file you should write your main styles. (or centralize your imports)
  * Import this file using the following HTML or equivalent:
@@ -94,6 +95,41 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /**
+ * Fonts of the site is defined here.
+ */
+/* line 10, ../sass/_fonts.scss */
+h1 {
+  color: #37373b;
+  font-family: "Oswald", "Arial", "Verdana", sans-serif;
+  font-weight: 400;
+}
+
+/* line 16, ../sass/_fonts.scss */
+h2 {
+  color: #37373b;
+  font-family: "Oswald", "Arial", "Verdana", sans-serif;
+  font-weight: 400;
+}
+/* line 21, ../sass/_fonts.scss */
+h2.content-title {
+  font-size: 2.5em;
+}
+
+/* line 26, ../sass/_fonts.scss */
+h3 {
+  color: #37373b;
+  font-family: "Oswald", "Arial", "Verdana", sans-serif;
+  font-weight: 400;
+}
+
+/* line 32, ../sass/_fonts.scss */
+h4 {
+  color: #37373b;
+  font-family: "Oswald", "Arial", "Verdana", sans-serif;
+  font-weight: 400;
+}
+
+/**
  * Layout of the site is defined here.
  */
 /* line 5, ../sass/_layout.scss */
@@ -110,8 +146,8 @@ body {
 /* line 14, ../sass/_layout.scss */
 .column {
   *zoom: 1;
-  max-width: 135em;
-  _width: 135em;
+  max-width: 60em;
+  _width: 60em;
   padding-left: 1.875em;
   padding-right: 1.875em;
   margin-left: auto;
@@ -124,7 +160,18 @@ body {
   clear: both;
 }
 
-/* line 21, ../sass/_layout.scss */
+/* line 18, ../sass/_layout.scss */
+.container {
+  background: #ffffff;
+  border: 1px solid #dddddd;
+  margin-bottom: 40px;
+  padding: 30px;
+  -webkit-border-radius: 5px 5px;
+  -moz-border-radius: 5px / 5px;
+  border-radius: 5px / 5px;
+}
+
+/* line 26, ../sass/_layout.scss */
 #header {
   background: #ffffff;
   position: relative;
@@ -133,12 +180,12 @@ body {
   -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 15px 5px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 15px 5px;
 }
-/* line 27, ../sass/_layout.scss */
+/* line 32, ../sass/_layout.scss */
 #header .navigation {
   float: right;
 }
 
-/* line 32, ../sass/_layout.scss */
+/* line 37, ../sass/_layout.scss */
 #logo a {
   background: url(../images/logo.png);
   float: left;
@@ -147,7 +194,7 @@ body {
   position: relative;
   width: 136px;
 }
-/* line 40, ../sass/_layout.scss */
+/* line 45, ../sass/_layout.scss */
 #logo a:hover {
   background: url(../images/logo-red.png);
   -webkit-transition-property: all;
@@ -164,7 +211,7 @@ body {
   transition-timing-function: ease-in;
 }
 
-/* line 48, ../sass/_layout.scss */
+/* line 53, ../sass/_layout.scss */
 #expose {
   border-bottom: 2px solid #dddddd;
   min-height: 175px;
@@ -175,23 +222,26 @@ body {
   background: url(../images/noise.png), linear-gradient(left, #556270, #92a5ba);
 }
 
-/* line 57, ../sass/_layout.scss */
+/* line 59, ../sass/_layout.scss */
+#main {
+  margin-top: 40px;
+}
+
+/* line 63, ../sass/_layout.scss */
 #main-content {
-  background: pink;
-  width: 67.59259%;
+  width: 56.25%;
   float: left;
-  margin-right: 3.7037%;
+  margin-right: 0%;
   display: inline;
 }
 
-/* line 62, ../sass/_layout.scss */
+/* line 67, ../sass/_layout.scss */
 #sidebar-right {
-  width: 28.7037%;
+  width: 26.5625%;
   float: right;
   margin-right: 0;
-  *margin-left: -5em;
+  *margin-left: 0em;
   display: inline;
-  background: yellow;
 }
 
 /**
@@ -211,4 +261,33 @@ body {
 /* line 18, ../sass/_navigation.scss */
 #main-menu ul.menu li a.active, #main-menu ul.menu li a:active, #main-menu ul.menu li a:hover {
   border-bottom: 4px solid #f44e4e;
+}
+
+/**
+ * Content of the site is defined here.
+ */
+/* line 5, ../sass/_content.scss */
+.blog {
+  padding-bottom: 0px;
+}
+/* line 8, ../sass/_content.scss */
+.blog .details {
+  background: #f5f5f5;
+  border-top: 1px solid #dddddd;
+  margin: 20px -30px 0;
+  padding: 15px 30px;
+  -webkit-border-radius: 0px 0px 5px 5px;
+  -moz-border-radius: 0px 0px 5px 5px;
+  -ms-border-radius: 0px 0px 5px 5px;
+  -o-border-radius: 0px 0px 5px 5px;
+  border-radius: 0px 0px 5px 5px;
+}
+/* line 15, ../sass/_content.scss */
+.blog .details .date-time {
+  font-weight: bold;
+}
+/* line 19, ../sass/_content.scss */
+.blog .details .tags {
+  float: right;
+  font-style: italic;
 }
