@@ -97,36 +97,83 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /**
  * Fonts of the site is defined here.
  */
-/* line 10, ../sass/_fonts.scss */
+/* line 7, ../sass/_fonts.scss */
+body {
+  color: #37373b;
+  font-family: "Arial", "Verdana", sans-serif;
+  font-weight: 200;
+}
+
+/* line 13, ../sass/_fonts.scss */
+p {
+  font-size: 1.15em;
+  letter-spacing: 0.75px;
+  line-height: 1.35;
+}
+
+/* line 19, ../sass/_fonts.scss */
 h1 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
+  font-size: 3em;
   font-weight: 400;
+  margin-bottom: 1em;
 }
 
-/* line 16, ../sass/_fonts.scss */
+/* line 27, ../sass/_fonts.scss */
 h2 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
+  font-size: 2em;
   font-weight: 400;
+  margin-bottom: 0.65em;
 }
-/* line 21, ../sass/_fonts.scss */
+/* line 34, ../sass/_fonts.scss */
 h2.content-title {
   font-size: 2.5em;
+  max-width: 92.5%;
+}
+/* line 39, ../sass/_fonts.scss */
+h2.block-title {
+  font-size: 1.75em;
 }
 
-/* line 26, ../sass/_fonts.scss */
+/* line 44, ../sass/_fonts.scss */
 h3 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
+  font-size: 1.5em;
   font-weight: 400;
 }
+/* line 50, ../sass/_fonts.scss */
+h3.expose-title {
+  color: #fbfbf8;
+  font-size: 2.85em;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 44px 0 0 90px;
+}
+/* line 58, ../sass/_fonts.scss */
+h3.expose-subtitle {
+  color: #fbfbf8;
+  font-size: 2.15em;
+  font-weight: 300;
+  padding: 8px 0 0 110px;
+}
 
-/* line 32, ../sass/_fonts.scss */
+/* line 66, ../sass/_fonts.scss */
 h4 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
   font-weight: 400;
+}
+
+/* line 73, ../sass/_fonts.scss */
+span.post-number {
+  color: #eeeeee;
+  font-family: "Oswald", "Arial", "Verdana", sans-serif;
+  font-size: 2.25em;
+  font-weight: 700;
 }
 
 /**
@@ -164,7 +211,7 @@ body {
 .container {
   background: #ffffff;
   border: 1px solid #dddddd;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding: 30px;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -229,7 +276,7 @@ body {
 
 /* line 63, ../sass/_layout.scss */
 #main-content {
-  width: 56.25%;
+  width: 62.5%;
   float: left;
   margin-right: 0%;
   display: inline;
@@ -237,7 +284,7 @@ body {
 
 /* line 67, ../sass/_layout.scss */
 #sidebar-right {
-  width: 26.5625%;
+  width: 32.8125%;
   float: right;
   margin-right: 0;
   *margin-left: 0em;
@@ -269,8 +316,15 @@ body {
 /* line 5, ../sass/_content.scss */
 .blog {
   padding-bottom: 0px;
+  position: relative;
 }
-/* line 8, ../sass/_content.scss */
+/* line 9, ../sass/_content.scss */
+.blog .post-number {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+/* line 15, ../sass/_content.scss */
 .blog .details {
   background: #f5f5f5;
   border-top: 1px solid #dddddd;
@@ -282,11 +336,11 @@ body {
   -o-border-radius: 0px 0px 5px 5px;
   border-radius: 0px 0px 5px 5px;
 }
-/* line 15, ../sass/_content.scss */
+/* line 22, ../sass/_content.scss */
 .blog .details .date-time {
   font-weight: bold;
 }
-/* line 19, ../sass/_content.scss */
+/* line 26, ../sass/_content.scss */
 .blog .details .tags {
   float: right;
   font-style: italic;

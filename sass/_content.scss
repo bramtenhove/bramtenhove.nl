@@ -4,6 +4,13 @@
 
 .blog {
   padding-bottom: 0px;
+  position: relative;
+
+  .post-number {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
 
   .details {
     background: #f5f5f5;

@@ -18,7 +18,7 @@ body {
 .container {
   background: #ffffff;
   border: 1px solid #dddddd;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   padding: 30px;
   @include border-radius(5px, 5px);
 }
@@ -61,11 +61,11 @@ body {
 }
 
 #main-content {
-  @include span-columns(9, 16);
+  @include span-columns(10, 16);
 }
 
 #sidebar-right {
-  @include span-columns(4.25 omega, 16);
+  @include span-columns(5.25 omega, 16);
 }
 
 #footer {
