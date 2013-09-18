@@ -106,12 +106,13 @@ body {
 
 /* line 13, ../sass/_fonts.scss */
 p {
-  font-size: 1.15em;
+  font-size: 1.05em;
   letter-spacing: 0.75px;
   line-height: 1.5;
+  text-align: justify;
 }
 
-/* line 19, ../sass/_fonts.scss */
+/* line 20, ../sass/_fonts.scss */
 h1 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
@@ -120,7 +121,7 @@ h1 {
   margin-bottom: 1em;
 }
 
-/* line 27, ../sass/_fonts.scss */
+/* line 28, ../sass/_fonts.scss */
 h2 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
@@ -128,24 +129,24 @@ h2 {
   font-weight: 400;
   margin-bottom: 0.65em;
 }
-/* line 34, ../sass/_fonts.scss */
+/* line 35, ../sass/_fonts.scss */
 h2.content-title {
   font-size: 2.5em;
   max-width: 92.5%;
 }
-/* line 39, ../sass/_fonts.scss */
+/* line 40, ../sass/_fonts.scss */
 h2.block-title {
   font-size: 1.65em;
 }
 
-/* line 44, ../sass/_fonts.scss */
+/* line 45, ../sass/_fonts.scss */
 h3 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
   font-size: 1.5em;
   font-weight: 400;
 }
-/* line 50, ../sass/_fonts.scss */
+/* line 51, ../sass/_fonts.scss */
 h3.expose-title {
   color: #fbfbf8;
   font-size: 2.85em;
@@ -153,7 +154,7 @@ h3.expose-title {
   letter-spacing: 1px;
   padding: 44px 0 0 90px;
 }
-/* line 58, ../sass/_fonts.scss */
+/* line 59, ../sass/_fonts.scss */
 h3.expose-subtitle {
   color: #fbfbf8;
   font-size: 2.15em;
@@ -161,14 +162,14 @@ h3.expose-subtitle {
   padding: 8px 0 0 110px;
 }
 
-/* line 66, ../sass/_fonts.scss */
+/* line 67, ../sass/_fonts.scss */
 h4 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
   font-weight: 400;
 }
 
-/* line 73, ../sass/_fonts.scss */
+/* line 74, ../sass/_fonts.scss */
 span.post-number {
   color: #eeeeee;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
@@ -440,5 +441,34 @@ img.full-width {
 span.center {
   display: block;
   text-align: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/**
+ * Form styling.
+ */
+/* line 7, ../sass/_forms.scss */
+form label {
+  font-style: italic;
+}
+/* line 11, ../sass/_forms.scss */
+form input[type=text], form textarea {
+  background: #ffffff;
+  border: 1px solid #cfcfcf;
+  box-sizing: border-box;
+  font-size: 0.8em;
+  font-weight: 400;
+  margin: 10px 0;
+  padding: 8px 12px;
+  -webkit-border-radius: 5px 5px;
+  -moz-border-radius: 5px / 5px;
+  border-radius: 5px / 5px;
+  -webkit-box-shadow: 0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
+  -moz-box-shadow: 0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
+  box-shadow: 0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
+}
+/* line 22, ../sass/_forms.scss */
+form input[type=text].full-width, form textarea.full-width {
   width: 100%;
 }
