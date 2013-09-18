@@ -29,3 +29,17 @@
     }
   }
 }
+
+img {
+  border: 1px solid #dddddd;
+
+  &.full-width {
+    width: 100%;
+  }
+}
+
+span.center {
+  display: block;
+  text-align: center;
+  width: 100%;
+}
