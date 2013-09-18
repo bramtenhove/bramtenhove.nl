@@ -4,10 +4,12 @@
 
 @import url("http://fonts.googleapis.com/css?family=Oswald:400,300,700");
 
+$default-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", "Verdana" sans-serif;
+
 body {
   color: #37373b;
-  font-family: "Arial", "Verdana", sans-serif;
-  font-weight: 200;
+  font-family: $default-font-family;
+  font-weight: 300;
 }
 
 p {
