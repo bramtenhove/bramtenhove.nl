@@ -6,6 +6,26 @@
   padding-bottom: 0px;
   position: relative;
 
+  .images {
+    margin-top: 15px;
+    width: 100%;
+
+    img {
+      float: left;
+      margin-left: 2px;
+
+      &:first-of-type {
+        margin: 0;
+      }
+    }
+
+    &:after {
+      clear: both;
+      content: "";
+      display: block;
+    }
+  }
+
   .post-number {
     position: absolute;
     top: 15px;
