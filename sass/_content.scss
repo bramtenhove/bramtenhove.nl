@@ -11,13 +11,20 @@
     width: 100%;
 
     img {
-      float: left;
-      margin-left: 2px;
+      border: none;
 
-      &:first-of-type {
-        margin: 0;
-      }
+      @include span-columns(1, 3, 0.1em);
+      @include nth-omega(3n);
     }
+
+    // img {
+    //   float: left;
+    //   margin-left: 2px;
+
+    //   &:first-of-type {
+    //     margin: 0;
+    //   }
+    // }
 
     &:after {
       clear: both;

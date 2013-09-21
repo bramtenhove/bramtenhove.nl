@@ -20,14 +20,13 @@ $grid-padding: 1.875em;
 /**
  * Clearfix.
  */
-.clearfix:before,
-.clearfix:after {
+.clearfix:before {
   content: " ";
   display: table;
 }
 
 .clearfix:after {
-  clear: both;
+  @include clear-after;
 }
 
 /**

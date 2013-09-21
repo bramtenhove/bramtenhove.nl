@@ -74,22 +74,23 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /**
  * Clearfix.
  */
-/* line 24, ../sass/_defaults.scss */
-.clearfix:before,
-.clearfix:after {
+/* line 23, ../sass/_defaults.scss */
+.clearfix:before {
   content: " ";
   display: table;
 }
 
-/* line 29, ../sass/_defaults.scss */
+/* line 28, ../sass/_defaults.scss */
 .clearfix:after {
   clear: both;
+  content: " ";
+  display: table;
 }
 
 /**
  * For IE 6/7 only, include this rule to trigger hasLayout and contain floats.
  */
-/* line 36, ../sass/_defaults.scss */
+/* line 35, ../sass/_defaults.scss */
 .clearfix {
   *zoom: 1;
 }
@@ -407,26 +408,32 @@ button.active, button:active, button:hover, .button.active, .button:active, .but
 }
 /* line 13, ../sass/_content.scss */
 .blog .images img {
+  border: none;
+  padding-left: 0.88889%;
+  padding-right: 0.88889%;
+  width: 31.55556%;
   float: left;
-  margin-left: 2px;
+  margin-right: 0%;
+  display: inline;
 }
-/* line 17, ../sass/_content.scss */
-.blog .images img:first-of-type {
-  margin: 0;
+/* line 184, ../../../../../Library/Ruby/Gems/1.8/gems/susy-1.0.9/sass/susy/_grid.scss */
+.blog .images img:nth-child(3n) {
+  float: right;
+  margin-right: 0;
 }
-/* line 22, ../sass/_content.scss */
+/* line 29, ../sass/_content.scss */
 .blog .images:after {
   clear: both;
   content: "";
   display: block;
 }
-/* line 29, ../sass/_content.scss */
+/* line 36, ../sass/_content.scss */
 .blog .post-number {
   position: absolute;
   top: 15px;
   right: 15px;
 }
-/* line 35, ../sass/_content.scss */
+/* line 42, ../sass/_content.scss */
 .blog .details {
   background: #f5f5f5;
   border-top: 1px solid #dddddd;
@@ -438,26 +445,26 @@ button.active, button:active, button:hover, .button.active, .button:active, .but
   -o-border-radius: 0px 0px 5px 5px;
   border-radius: 0px 0px 5px 5px;
 }
-/* line 42, ../sass/_content.scss */
+/* line 49, ../sass/_content.scss */
 .blog .details .date-time {
   font-weight: bold;
 }
-/* line 46, ../sass/_content.scss */
+/* line 53, ../sass/_content.scss */
 .blog .details .tags {
   float: right;
   font-style: italic;
 }
 
-/* line 53, ../sass/_content.scss */
+/* line 60, ../sass/_content.scss */
 img {
   border: 1px solid #dddddd;
 }
-/* line 56, ../sass/_content.scss */
+/* line 63, ../sass/_content.scss */
 img.full-width {
   width: 100%;
 }
 
-/* line 61, ../sass/_content.scss */
+/* line 68, ../sass/_content.scss */
 span.center {
   display: block;
   text-align: center;
@@ -468,12 +475,12 @@ span.center {
 /**
  * Form styling.
  */
-/* line 7, ../sass/_forms.scss */
+/* line 6, ../sass/_forms.scss */
 form label {
   font-style: italic;
 }
-/* line 11, ../sass/_forms.scss */
-form input[type=text], form textarea {
+/* line 10, ../sass/_forms.scss */
+form input, form textarea {
   background: #ffffff;
   border: 1px solid #cfcfcf;
   box-sizing: border-box;
@@ -487,8 +494,14 @@ form input[type=text], form textarea {
   -webkit-box-shadow: 0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
   -moz-box-shadow: 0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
   box-shadow: 0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
-}
-/* line 22, ../sass/_forms.scss */
-form input[type=text].full-width, form textarea.full-width {
   width: 100%;
+  float: left;
+  margin-right: 0%;
+  display: inline;
+}
+/* line 23, ../sass/_forms.scss */
+form:after {
+  clear: both;
+  content: " ";
+  display: table;
 }

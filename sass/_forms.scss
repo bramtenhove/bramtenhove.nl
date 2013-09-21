@@ -3,12 +3,11 @@
  */
 
 form {
-
   label {
     font-style: italic;
   }
 
-  input[type=text], textarea {
+  input, textarea {
     background: #ffffff;
     border: 1px solid #cfcfcf;
     box-sizing: border-box;
@@ -18,9 +17,10 @@ form {
     padding: 8px 12px;
     @include border-radius(5px, 5px);
     @include box-shadow(0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset);
+    @include span-columns(1, 1);
+  }
 
-    &.full-width {
-      width: 100%;
-    }
+  &:after {
+    @include clear-after;
   }
 }
