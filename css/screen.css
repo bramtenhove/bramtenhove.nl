@@ -407,8 +407,7 @@ button.active, button:active, button:hover, .button.active, .button:active, .but
   width: 100%;
 }
 /* line 13, ../sass/_content.scss */
-.blog .images img {
-  border: none;
+.blog .images .image {
   padding-left: 0.88889%;
   padding-right: 0.88889%;
   width: 31.55556%;
@@ -417,23 +416,27 @@ button.active, button:active, button:hover, .button.active, .button:active, .but
   display: inline;
 }
 /* line 184, ../../../../../Library/Ruby/Gems/1.8/gems/susy-1.0.9/sass/susy/_grid.scss */
-.blog .images img:nth-child(3n) {
+.blog .images .image:nth-child(3n) {
   float: right;
   margin-right: 0;
 }
-/* line 29, ../sass/_content.scss */
+/* line 17, ../sass/_content.scss */
+.blog .images .image img {
+  border: none;
+}
+/* line 31, ../sass/_content.scss */
 .blog .images:after {
   clear: both;
   content: "";
   display: block;
 }
-/* line 36, ../sass/_content.scss */
+/* line 38, ../sass/_content.scss */
 .blog .post-number {
   position: absolute;
   top: 15px;
   right: 15px;
 }
-/* line 42, ../sass/_content.scss */
+/* line 44, ../sass/_content.scss */
 .blog .details {
   background: #f5f5f5;
   border-top: 1px solid #dddddd;
@@ -445,26 +448,26 @@ button.active, button:active, button:hover, .button.active, .button:active, .but
   -o-border-radius: 0px 0px 5px 5px;
   border-radius: 0px 0px 5px 5px;
 }
-/* line 49, ../sass/_content.scss */
+/* line 51, ../sass/_content.scss */
 .blog .details .date-time {
   font-weight: bold;
 }
-/* line 53, ../sass/_content.scss */
+/* line 55, ../sass/_content.scss */
 .blog .details .tags {
   float: right;
   font-style: italic;
 }
 
-/* line 60, ../sass/_content.scss */
+/* line 62, ../sass/_content.scss */
 img {
   border: 1px solid #dddddd;
 }
-/* line 63, ../sass/_content.scss */
+/* line 65, ../sass/_content.scss */
 img.full-width {
   width: 100%;
 }
 
-/* line 68, ../sass/_content.scss */
+/* line 70, ../sass/_content.scss */
 span.center {
   display: block;
   text-align: center;
