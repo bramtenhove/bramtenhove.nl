@@ -14,15 +14,20 @@ p {
   font-size: 1.05em;
   letter-spacing: 0.75px;
   line-height: 1.5;
+  margin-bottom: 0.65em;
   text-align: justify;
 }
 
 h1 {
   color: $default-color;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 400;
-  margin-bottom: 1em;
+  margin-bottom: 0.65em;
+
+  &.content-title {
+    width: 92.5%;
+  }
 }
 
 h2 {
@@ -47,6 +52,7 @@ h3 {
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
   font-size: 1.5em;
   font-weight: 400;
+  margin-bottom: 0.65em;
 
   &.expose-title {
     color: #fbfbf8;
@@ -68,6 +74,18 @@ h4 {
   color: $default-color;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
   font-weight: 400;
+  margin-bottom: 0.65em;
+}
+
+.full-display {
+  h2 {
+    font-size: 1.75em;
+  }
+
+  h3 {
+    font-size: 1.25em;
+    color: $default-link-color;
+  }
 }
 
 span {
