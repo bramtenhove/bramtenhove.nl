@@ -159,17 +159,19 @@ h3.expose-title {
   font-size: 2.85em;
   font-weight: 700;
   letter-spacing: 1px;
+  margin-bottom: 0;
   padding: 44px 0 0 90px;
 }
-/* line 65, ../sass/_fonts.scss */
+/* line 66, ../sass/_fonts.scss */
 h3.expose-subtitle {
   color: #fbfbf8;
   font-size: 2.15em;
   font-weight: 300;
+  margin-bottom: 0;
   padding: 8px 0 0 110px;
 }
 
-/* line 73, ../sass/_fonts.scss */
+/* line 75, ../sass/_fonts.scss */
 h4 {
   color: #37373b;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
@@ -177,17 +179,17 @@ h4 {
   margin-bottom: 0.65em;
 }
 
-/* line 81, ../sass/_fonts.scss */
+/* line 83, ../sass/_fonts.scss */
 .full-display h2 {
   font-size: 1.75em;
 }
-/* line 85, ../sass/_fonts.scss */
+/* line 87, ../sass/_fonts.scss */
 .full-display h3 {
   font-size: 1.25em;
   color: #f44e4e;
 }
 
-/* line 92, ../sass/_fonts.scss */
+/* line 94, ../sass/_fonts.scss */
 span.post-number {
   color: #eeeeee;
   font-family: "Oswald", "Arial", "Verdana", sans-serif;
