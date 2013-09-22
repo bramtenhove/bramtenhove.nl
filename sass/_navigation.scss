@@ -15,9 +15,12 @@ a {
 #main-menu {
 
   ul.menu {
+    list-style-type: none;
+    margin: 0;
 
     li {
       float: left;
+      margin: 0;
 
       a {
         color: $default-color;

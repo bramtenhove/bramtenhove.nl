@@ -341,11 +341,17 @@ a.active, a:active, a:hover {
   text-decoration: none;
 }
 
-/* line 19, ../sass/_navigation.scss */
+/* line 17, ../sass/_navigation.scss */
+#main-menu ul.menu {
+  list-style-type: none;
+  margin: 0;
+}
+/* line 21, ../sass/_navigation.scss */
 #main-menu ul.menu li {
   float: left;
+  margin: 0;
 }
-/* line 22, ../sass/_navigation.scss */
+/* line 25, ../sass/_navigation.scss */
 #main-menu ul.menu li a {
   color: #37373b;
   display: block;
@@ -355,36 +361,36 @@ a.active, a:active, a:hover {
   padding: 0 30px;
   text-decoration: none;
 }
-/* line 31, ../sass/_navigation.scss */
+/* line 34, ../sass/_navigation.scss */
 #main-menu ul.menu li a.active, #main-menu ul.menu li a:active, #main-menu ul.menu li a:hover {
   border-bottom: 4px solid #f44e4e;
   text-decoration: none;
 }
 
-/* line 41, ../sass/_navigation.scss */
+/* line 44, ../sass/_navigation.scss */
 h1 a, h2 a, h3 a, h4 a {
   color: #37373b;
   text-decoration: none;
   transition: color 0.2s ease-out;
 }
-/* line 46, ../sass/_navigation.scss */
+/* line 49, ../sass/_navigation.scss */
 h1 a.active, h1 a:active, h1 a:hover, h2 a.active, h2 a:active, h2 a:hover, h3 a.active, h3 a:active, h3 a:hover, h4 a.active, h4 a:active, h4 a:hover {
   color: #f44e4e;
   text-decoration: none;
 }
 
-/* line 54, ../sass/_navigation.scss */
+/* line 57, ../sass/_navigation.scss */
 span.date-time a, span.tags a {
   color: #37373b;
   text-decoration: none;
   transition: color 0.2s ease-out;
 }
-/* line 59, ../sass/_navigation.scss */
+/* line 62, ../sass/_navigation.scss */
 span.date-time a.active, span.date-time a:active, span.date-time a:hover, span.tags a.active, span.tags a:active, span.tags a:hover {
   color: #f44e4e;
 }
 
-/* line 65, ../sass/_navigation.scss */
+/* line 68, ../sass/_navigation.scss */
 button, .button {
   background: #f44e4e;
   border: 2px solid #eeeeee;
@@ -401,7 +407,7 @@ button, .button {
   -moz-border-radius: 5px / 5px;
   border-radius: 5px / 5px;
 }
-/* line 79, ../sass/_navigation.scss */
+/* line 82, ../sass/_navigation.scss */
 button.active, button:active, button:hover, .button.active, .button:active, .button:hover {
   background: #ff3b3b;
   border: 2px solid #dddddd;
@@ -532,6 +538,16 @@ span.center {
   text-align: center;
   margin: 0 auto;
   width: 100%;
+}
+
+/* line 97, ../sass/_content.scss */
+ul {
+  margin: 8px 0 8px 25px;
+  list-style-type: square;
+}
+/* line 101, ../sass/_content.scss */
+ul li {
+  margin: 8px 0;
 }
 
 /**
