@@ -556,17 +556,22 @@ ul li {
  * Form styling.
  */
 /* line 6, ../sass/_forms.scss */
-form label {
-  font-style: italic;
+form.inline {
+  margin-top: 2em;
 }
 /* line 10, ../sass/_forms.scss */
-form input, form textarea {
+form label {
+  display: block;
+  font-style: italic;
+}
+/* line 15, ../sass/_forms.scss */
+form input[type=text], form textarea {
   background: #ffffff;
   border: 1px solid #cfcfcf;
   box-sizing: border-box;
   font-size: 0.8em;
   font-weight: 400;
-  margin: 10px 0;
+  margin: 1em 0;
   padding: 8px 12px;
   -webkit-border-radius: 5px 5px;
   -moz-border-radius: 5px / 5px;
@@ -579,7 +584,17 @@ form input, form textarea {
   margin-right: 0%;
   display: inline;
 }
-/* line 23, ../sass/_forms.scss */
+/* line 27, ../sass/_forms.scss */
+form input[type=text]:hover, form textarea:hover {
+  -webkit-box-shadow: 0 0 0 5px #f0f0f0, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
+  -moz-box-shadow: 0 0 0 5px #f0f0f0, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
+  box-shadow: 0 0 0 5px #f0f0f0, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset;
+}
+/* line 32, ../sass/_forms.scss */
+form textarea {
+  min-height: 10em;
+}
+/* line 36, ../sass/_forms.scss */
 form:after {
   clear: both;
   content: " ";
