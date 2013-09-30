@@ -12,6 +12,7 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/css/vendor/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body>
@@ -49,57 +50,71 @@
       <div id="main" class="column wrapper">
 
         <div id="main-content" role="main">
-          <div class="container blog">
-            <h2 class="content-title"><a href="singleblog2.html">Advanced Drupal hooks</a></h2>
-            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal <a href="singleblog2.html">distribution</a> of letters, as opposed to using 'Content here, content here', making it look like readable English.</p>
+          <div class="container blog full-display">
+            <h1 class="content-title"><a href="singleblog2.html">Advanced Drupal hooks</a></h1>
+            <p>As you might know Drupal is an advanced CMS. Well, it's more of a Content Management Framework, really. Drupal offers the developer quite a lot of freedom when it's about functionality, display or any other important aspect of your website.</p>
+
+            <p>Today, we'll look at some of the hooks Drupal makes available for developers. Starting off with hook_module_implements_alter we'll dive into what is known as the more "advanced" side of Drupal development.</p>
+
+            <h2>hook_module_implements_alter</h2>
+
+            <p>This hook is invoked during module_implements(). A module may implement this hook in order to reorder the implementing modules, which are otherwise ordered by the module's system weight.</p>
+
+            <p>Note that hooks invoked using drupal_alter() can have multiple variations (such as hook_form_alter() and hook_form_FORM_ID_alter()). drupal_alter() will call all such variants defined by a single module in turn. For the purposes of hook_module_implements_alter(), these variants are treated as a single hook. Thus, to ensure that your implementation of hook_form_FORM_ID_alter() is called at the right time, you will have to change the order of hook_form_alter() implementation in hook_module_implements_alter().</p>
+
+            <h3>Code</h3>
+            <p>Look at the PHP code! It's being highlighted. Wow!</p>
+
+            <pre class="language-php"><code>function hook_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'rdf_mapping') {
+    // Move my_module_rdf_mapping() to the end of the list. module_implements()
+    // iterates through $implementations with a foreach loop which PHP iterates
+    // in the order that the items were added, so to move an item to the end of
+    // the array, we remove it and then add it.
+    $group = $implementations['my_module'];
+    unset($implementations['my_module']);
+    $implementations['my_module'] = $group;
+  }
+}</code></pre>
+
+            <p>And not just PHP. Look at that SCSS code, oeeeh pretty!</p>
+
+            <pre class="language-scss"><code>input[type=text], textarea {
+    background: #ffffff;
+    border: 1px solid #cfcfcf;
+    box-sizing: border-box;
+    font-size: 0.8em;
+    font-weight: 400;
+    margin: 1em 0;
+    padding: 8px 12px;
+    @include border-radius(5px, 5px);
+    @include box-shadow(0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset);
+    @include span-columns(1, 1);
+
+    &:hover {
+      @include box-shadow(0 0 0 5px #f0f0f0, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset);
+    }
+  }</code></pre>
+
+            <p>You're kidding, it even highlights SQL?</p>
+
+            <pre class="language-sql"><code>SELECT productId FROM
+(
+  SELECT departmentId, COUNT(*) DeptIDCount FROM #Dept
+  GROUP BY departmentId
+) A JOIN
+(
+  SELECT productId, COUNT(*) ProdIdCount FROM #Prod
+  GROUP BY productId
+) B ON A.departmentId=B.productId AND DeptIDCount=ProdIdCount</code></pre>
+
+            <p>I'm amazed. Now I should just start checking out how it highlights lines and shows line numbers, etc. Ah, I just realized this will have to wait a day or two.</p>
 
             <span class="post-number">#4</span>
 
             <div class="details">
-              <span class="date-time"><a href="singleblog2.html">Thursday, June 27, 2013</a></span>
-              <span class="tags"><a href="#">tutorial</a>, <a href="#">Drupal</a>, <a href="#">hooks</a></span>
-            </div>
-          </div>
-
-          <div class="container blog">
-            <h2 class="content-title"><a href="singleblog.html">How to set up MultiCore Solr on OS X</a></h2>
-            <p>Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-
-            <span class="post-number">#3</span>
-
-            <div class="details">
-              <span class="date-time"><a href="singleblog.html">Tuesday, June 25, 2013</a></span>
-              <span class="tags"><a href="#">tutorial</a>, <a href="#">Solr</a>, <a href="#">OS X Lion</a></span>
-            </div>
-          </div>
-
-          <div class="container blog">
-            <h2 class="content-title"><a href="singleblog.html">Wallpaper Wednesday #1</a></h2>
-            <p>Tired of the same old wallpapers you are looking at for over a decade now? Try some new ones! I selected some of the best wallpapers that I have collected in over a years time.</p>
-
-            <div class="image-set">
-              <div class="image-teaser"><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper1.jpg" /></a></div>
-              <div class="image-teaser"><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper2.jpg" /></a></div>
-              <div class="image-teaser"><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper3.jpg" /></a></div>
-            </div>
-
-            <span class="post-number">#2</span>
-
-            <div class="details">
-              <span class="date-time"><a href="singleblog.html">Wednesday, June 19, 2013</a></span>
+              <span class="date-time"><a href="singleblog2.html">Wednesday, June 19, 2013</a></span>
               <span class="tags"><a href="#">wallpaper</a>, <a href="#">Wallpaper Wednesday</a></span>
-            </div>
-          </div>
-
-          <div class="container blog">
-            <h2 class="content-title"><a href="singleblog.html">Finally, a new website</a></h2>
-            <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will <a href="singleblog.html">uncover</a> many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-
-            <span class="post-number">#1</span>
-
-            <div class="details">
-              <span class="date-time"><a href="singleblog.html">Saturday, June 15, 2013</a></span>
-              <span class="tags"><a href="#">website</a>, <a href="#">news</a></span>
             </div>
           </div>
         </div>
@@ -137,6 +152,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+    <script src="js/vendor/prism.js"></script>
     <script src="js/main.js"></script>
 
     <script>
