@@ -38,3 +38,78 @@ $computer: 55em 16;
 .clearfix {
   *zoom: 1;
 }
+
+/**
+ * Responsive classes.
+ */
+.mobile {
+  display: block;
+}
+
+.tablet {
+  display: none;
+
+  &.mobile {
+    display: block;
+  }
+}
+
+.computer {
+  display: none;
+
+  &.mobile {
+    display: block;
+  }
+}
+
+@include at-breakpoint($tablet) {
+  .mobile {
+    display: none;
+  }
+
+  .tablet {
+    display: block;
+
+    &.mobile {
+      display: block;
+    }
+
+    &.computer {
+      display: block;
+    }
+  }
+
+  .computer {
+    display: none;
+
+    &.mobile {
+      display: none;
+    }
+  }
+}
+
+@include at-breakpoint($computer) {
+  .mobile {
+    display: none;
+  }
+
+  .tablet {
+    display: none;
+
+    &.mobile {
+      display: none;
+    }
+  }
+
+  .computer {
+    display: block;
+
+    &.mobile {
+      display: block;
+    }
+
+    &.tablet {
+      display: block;
+    }
+  }
+}

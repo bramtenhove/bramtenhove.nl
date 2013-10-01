@@ -96,6 +96,88 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 }
 
 /**
+ * Responsive classes.
+ */
+/* line 45, ../sass/_defaults.scss */
+.mobile {
+  display: block;
+}
+
+/* line 49, ../sass/_defaults.scss */
+.tablet {
+  display: none;
+}
+/* line 52, ../sass/_defaults.scss */
+.tablet.mobile {
+  display: block;
+}
+
+/* line 57, ../sass/_defaults.scss */
+.computer {
+  display: none;
+}
+/* line 60, ../sass/_defaults.scss */
+.computer.mobile {
+  display: block;
+}
+
+@media (min-width: 37.5em) {
+  /* line 66, ../sass/_defaults.scss */
+  .mobile {
+    display: none;
+  }
+
+  /* line 70, ../sass/_defaults.scss */
+  .tablet {
+    display: block;
+  }
+  /* line 73, ../sass/_defaults.scss */
+  .tablet.mobile {
+    display: block;
+  }
+  /* line 77, ../sass/_defaults.scss */
+  .tablet.computer {
+    display: block;
+  }
+
+  /* line 82, ../sass/_defaults.scss */
+  .computer {
+    display: none;
+  }
+  /* line 85, ../sass/_defaults.scss */
+  .computer.mobile {
+    display: none;
+  }
+}
+@media (min-width: 55em) {
+  /* line 92, ../sass/_defaults.scss */
+  .mobile {
+    display: none;
+  }
+
+  /* line 96, ../sass/_defaults.scss */
+  .tablet {
+    display: none;
+  }
+  /* line 99, ../sass/_defaults.scss */
+  .tablet.mobile {
+    display: none;
+  }
+
+  /* line 104, ../sass/_defaults.scss */
+  .computer {
+    display: block;
+  }
+  /* line 107, ../sass/_defaults.scss */
+  .computer.mobile {
+    display: block;
+  }
+  /* line 111, ../sass/_defaults.scss */
+  .computer.tablet {
+    display: block;
+  }
+}
+/**
  * Fonts of the site is defined here.
  */
 /* line 7, ../sass/_fonts.scss */
