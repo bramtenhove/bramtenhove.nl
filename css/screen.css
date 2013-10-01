@@ -177,6 +177,21 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
     display: block;
   }
 }
+/* line 118, ../sass/_defaults.scss */
+.separator {
+  border-bottom: 1px solid #dddddd;
+  border-top: 1px solid #cccccc;
+  height: 0px;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+@media (min-width: 55em) {
+  /* line 127, ../sass/_defaults.scss */
+  .separator {
+    display: none;
+  }
+}
 /**
  * Fonts of the site is defined here.
  */
