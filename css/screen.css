@@ -74,13 +74,13 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /**
  * Clearfix.
  */
-/* line 26, ../sass/_defaults.scss */
+/* line 27, ../sass/_defaults.scss */
 .clearfix:before {
   content: " ";
   display: table;
 }
 
-/* line 31, ../sass/_defaults.scss */
+/* line 32, ../sass/_defaults.scss */
 .clearfix:after {
   clear: both;
   content: " ";
@@ -90,7 +90,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /**
  * For IE 6/7 only, include this rule to trigger hasLayout and contain floats.
  */
-/* line 38, ../sass/_defaults.scss */
+/* line 39, ../sass/_defaults.scss */
 .clearfix {
   *zoom: 1;
 }
@@ -98,81 +98,81 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 /**
  * Responsive classes.
  */
-/* line 45, ../sass/_defaults.scss */
+/* line 46, ../sass/_defaults.scss */
 .mobile {
   display: block;
 }
 
-/* line 49, ../sass/_defaults.scss */
+/* line 50, ../sass/_defaults.scss */
 .tablet {
   display: none;
 }
-/* line 52, ../sass/_defaults.scss */
+/* line 53, ../sass/_defaults.scss */
 .tablet.mobile {
   display: block;
 }
 
-/* line 57, ../sass/_defaults.scss */
+/* line 58, ../sass/_defaults.scss */
 .computer {
   display: none;
 }
-/* line 60, ../sass/_defaults.scss */
+/* line 61, ../sass/_defaults.scss */
 .computer.mobile {
   display: block;
 }
 
 @media (min-width: 37.5em) {
-  /* line 66, ../sass/_defaults.scss */
+  /* line 67, ../sass/_defaults.scss */
   .mobile {
     display: none;
   }
 
-  /* line 70, ../sass/_defaults.scss */
+  /* line 71, ../sass/_defaults.scss */
   .tablet {
     display: block;
   }
-  /* line 73, ../sass/_defaults.scss */
+  /* line 74, ../sass/_defaults.scss */
   .tablet.mobile {
     display: block;
   }
-  /* line 77, ../sass/_defaults.scss */
+  /* line 78, ../sass/_defaults.scss */
   .tablet.computer {
     display: block;
   }
 
-  /* line 82, ../sass/_defaults.scss */
+  /* line 83, ../sass/_defaults.scss */
   .computer {
     display: none;
   }
-  /* line 85, ../sass/_defaults.scss */
+  /* line 86, ../sass/_defaults.scss */
   .computer.mobile {
     display: none;
   }
 }
 @media (min-width: 55em) {
-  /* line 92, ../sass/_defaults.scss */
+  /* line 93, ../sass/_defaults.scss */
   .mobile {
     display: none;
   }
 
-  /* line 96, ../sass/_defaults.scss */
+  /* line 97, ../sass/_defaults.scss */
   .tablet {
     display: none;
   }
-  /* line 99, ../sass/_defaults.scss */
+  /* line 100, ../sass/_defaults.scss */
   .tablet.mobile {
     display: none;
   }
 
-  /* line 104, ../sass/_defaults.scss */
+  /* line 105, ../sass/_defaults.scss */
   .computer {
     display: block;
   }
-  /* line 107, ../sass/_defaults.scss */
+  /* line 108, ../sass/_defaults.scss */
   .computer.mobile {
     display: block;
   }
-  /* line 111, ../sass/_defaults.scss */
+  /* line 112, ../sass/_defaults.scss */
   .computer.tablet {
     display: block;
   }
@@ -298,8 +298,8 @@ body {
   *zoom: 1;
   max-width: 60em;
   _width: 60em;
-  padding-left: 1.875em;
-  padding-right: 1.875em;
+  padding-left: 0em;
+  padding-right: 0em;
   margin-left: auto;
   margin-right: auto;
 }
@@ -310,7 +310,39 @@ body {
   clear: both;
 }
 
-/* line 18, ../sass/_layout.scss */
+@media (min-width: 37.5em) {
+  /* line 21, ../sass/_layout.scss */
+  .column {
+    max-width: 37.5em;
+    padding-left: 1.875em;
+    padding-right: 1.875em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 38, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  .column:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+@media (min-width: 55em) {
+  /* line 30, ../sass/_layout.scss */
+  .column {
+    max-width: 60em;
+    padding-left: 1.875em;
+    padding-right: 1.875em;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 38, ../../../.rvm/gems/ruby-2.0.0-p247/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  .column:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+/* line 36, ../sass/_layout.scss */
 .container {
   background: #ffffff;
   border: 1px solid #dddddd;
@@ -321,7 +353,7 @@ body {
   border-radius: 5px / 5px;
 }
 
-/* line 26, ../sass/_layout.scss */
+/* line 44, ../sass/_layout.scss */
 #header {
   background: #ffffff;
   min-height: 100px;
@@ -331,12 +363,12 @@ body {
   -moz-box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 15px 5px;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 15px 5px;
 }
-/* line 33, ../sass/_layout.scss */
+/* line 51, ../sass/_layout.scss */
 #header .navigation {
   float: right;
 }
 
-/* line 38, ../sass/_layout.scss */
+/* line 56, ../sass/_layout.scss */
 #logo a {
   background: url(../images/logo.png);
   float: left;
@@ -345,7 +377,7 @@ body {
   position: relative;
   width: 136px;
 }
-/* line 46, ../sass/_layout.scss */
+/* line 64, ../sass/_layout.scss */
 #logo a:hover {
   background: url(../images/logo-red.png);
   -webkit-transition-property: all;
@@ -362,13 +394,13 @@ body {
   transition-timing-function: ease-in;
 }
 
-/* line 54, ../sass/_layout.scss */
+/* line 72, ../sass/_layout.scss */
 #expose {
   display: none;
 }
 
 @media (min-width: 37.5em) {
-  /* line 59, ../sass/_layout.scss */
+  /* line 77, ../sass/_layout.scss */
   #expose {
     border-bottom: 2px solid #dddddd;
     display: block;
@@ -380,27 +412,27 @@ body {
     background: url(../images/noise.png), linear-gradient(left, #556270, #92a5ba);
   }
 }
-/* line 67, ../sass/_layout.scss */
+/* line 85, ../sass/_layout.scss */
 #main {
   margin-top: 40px;
 }
 
 @media (min-width: 55em) {
-  /* line 72, ../sass/_layout.scss */
+  /* line 90, ../sass/_layout.scss */
   #main-content {
     width: 62.5%;
     float: left;
     margin-right: 0%;
   }
 
-  /* line 76, ../sass/_layout.scss */
+  /* line 94, ../sass/_layout.scss */
   #sidebar-right {
     width: 32.8125%;
     float: right;
     margin-right: 0;
   }
 }
-/* line 81, ../sass/_layout.scss */
+/* line 99, ../sass/_layout.scss */
 #footer {
   border-top: 2px solid #dddddd;
   margin-top: 30px;
@@ -411,7 +443,7 @@ body {
   background: url(../images/noise.png), -o-linear-gradient(left, #36363a, #36363a);
   background: url(../images/noise.png), linear-gradient(left, #36363a, #36363a);
 }
-/* line 87, ../sass/_layout.scss */
+/* line 105, ../sass/_layout.scss */
 #footer img.copyright {
   border: none;
   padding: 20px 0 0 30px;

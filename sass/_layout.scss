@@ -15,6 +15,24 @@ body {
   @include container;
 }
 
+// Different grid padding for tablets.
+@include at-breakpoint($tablet) {
+  @include with-grid-settings($padding: $grid-padding-default) {
+    .column {
+      @include container;
+    }
+  }
+}
+
+// Different grid padding for computers.
+@include at-breakpoint($computer) {
+  @include with-grid-settings($padding: $grid-padding-default) {
+    .column {
+      @include container;
+    }
+  }
+}
+
 .container {
   background: #ffffff;
   border: 1px solid #dddddd;
