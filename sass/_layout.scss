@@ -25,6 +25,7 @@ body {
 
 #header {
   background: #ffffff;
+  min-height: 100px;
   position: relative;
   z-index: 10;
   @include box-shadow(rgba(#000000, 0.4) 0px 0px 15px 5px);
@@ -51,21 +52,30 @@ body {
 }
 
 #expose {
-  border-bottom: 2px solid #dddddd;
-  min-height: 175px;
-  @include background(url(../images/noise.png), linear-gradient(left, #556270, #92a5ba));
+  display: none;
+}
+
+@include at-breakpoint($tablet) {
+  #expose {
+    border-bottom: 2px solid #dddddd;
+    display: block;
+    min-height: 175px;
+    @include background(url(../images/noise.png), linear-gradient(left, #556270, #92a5ba));
+  }
 }
 
 #main {
   margin-top: 40px;
 }
 
-#main-content {
-  @include span-columns(10, 16);
-}
+@include at-breakpoint($computer) {
+  #main-content {
+    @include span-columns(10, 16);
+  }
 
-#sidebar-right {
-  @include span-columns(5.25 omega, 16);
+  #sidebar-right {
+    @include span-columns(5.25 omega, 16);
+  }
 }
 
 #footer {

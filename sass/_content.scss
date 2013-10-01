@@ -65,9 +65,17 @@
       font-weight: bold;
     }
 
+    // By default we will not show the tags (mobile-first).
     .tags {
-      float: right;
-      font-style: italic;
+      display: none;
+    }
+
+    @include at-breakpoint($tablet) {
+      .tags {
+        display: block;
+        float: right;
+        font-style: italic;
+      }
     }
   }
 }
