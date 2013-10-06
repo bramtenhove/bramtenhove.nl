@@ -12,7 +12,8 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <link href="/css/vendor/responsiveslides.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -78,11 +79,11 @@
             <h2 class="content-title"><a href="singleblog.html">Wallpaper Wednesday #1</a></h2>
             <p>Tired of the same old wallpapers you are looking at for over a decade now? Try some new ones! I selected some of the best wallpapers that I have collected in over a years time.</p>
 
-            <div class="image-set">
-              <div class="image-teaser"><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper1.jpg" /></a></div>
-              <div class="image-teaser"><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper2.jpg" /></a></div>
-              <div class="image-teaser"><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper3.jpg" /></a></div>
-            </div>
+            <ul class="image-slides">
+              <li><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper1.jpg" /></a></li>
+              <li><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper2.jpg" /></a></li>
+              <li><a href="singleblog.html"><img src="images/wallpapers/thumbs/wallpaper3.jpg" /></a></li>
+            </ul>
 
             <span class="post-number">#2</span>
 
@@ -140,8 +141,9 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-    <script src="js/main.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
+    <script src="/js/vendor/responsiveslides.min.js"></script>
+    <script src="/js/main.js"></script>
 
     <script>
       // var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
