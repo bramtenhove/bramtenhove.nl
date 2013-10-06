@@ -19,14 +19,16 @@ var app = {
     });
 
     // Start the image slider.
-    $(".image-set").responsiveSlides({
-      auto: true,
-      speed: 500,
-      timeout: 3500,
-      pager: false,
-      nav: false,
-      pause: true
-    });
+    if ($.fn.responsiveSlides) {
+      $(".image-set").responsiveSlides({
+        auto: true,
+        speed: 500,
+        timeout: 3500,
+        pager: false,
+        nav: false,
+        pause: true
+      });
+    }
   }
 
 };
