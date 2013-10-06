@@ -19,10 +19,10 @@ var app = {
     });
 
     // Start the image slider.
-    $(".image-slides").responsiveSlides({
+    $(".image-set").responsiveSlides({
       auto: true,
       speed: 500,
-      timeout: 5000,
+      timeout: 3500,
       pager: false,
       nav: false,
       pause: true

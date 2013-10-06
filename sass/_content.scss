@@ -7,23 +7,9 @@
   position: relative;
 
   .image-set {
-    margin-top: 15px;
-    width: 100%;
-
-    .image-teaser {
-      @include span-columns(1, 3, 0.1em);
-      @include nth-omega(3n);
-
-      img {
-        border: none;
-      }
-    }
-
-    &:after {
-      clear: both;
-      content: "";
-      display: block;
-    }
+    list-style: none;
+    margin: 15px 0 0 0;
+    padding: none;
   }
 
   .image {
