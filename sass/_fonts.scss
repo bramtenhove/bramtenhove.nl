@@ -102,3 +102,8 @@ span {
     font-weight: 700;
   }
 }
+
+::selection {
+  background: $default-background;
+  color: $default-link-color;
+}

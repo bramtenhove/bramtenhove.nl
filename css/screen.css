@@ -298,6 +298,12 @@ span.post-number {
   font-weight: 700;
 }
 
+/* line 106, ../sass/_fonts.scss */
+::selection {
+  background: #eeeeee;
+  color: #f44e4e;
+}
+
 /**
  * Layout of the site is defined here.
  */
