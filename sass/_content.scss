@@ -60,10 +60,15 @@
   }
 }
 
-.owl-carousel .item img {
-  display: block;
-  width: 100%;
-  height: auto;
+// Owl Slider.
+.owl-carousel .item {
+  max-height: 275px;
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
 }
 
 img {

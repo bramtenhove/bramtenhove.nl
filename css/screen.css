@@ -688,23 +688,27 @@ button.active, button:active, button:hover, .button.active, .button:active, .but
   }
 }
 
-/* line 63, ../sass/_content.scss */
+/* line 64, ../sass/_content.scss */
+.owl-carousel .item {
+  max-height: 275px;
+}
+/* line 67, ../sass/_content.scss */
 .owl-carousel .item img {
   display: block;
   width: 100%;
   height: auto;
 }
 
-/* line 69, ../sass/_content.scss */
+/* line 74, ../sass/_content.scss */
 img {
   border: 1px solid #dddddd;
 }
-/* line 72, ../sass/_content.scss */
+/* line 77, ../sass/_content.scss */
 img.full-width {
   width: 100%;
 }
 
-/* line 77, ../sass/_content.scss */
+/* line 82, ../sass/_content.scss */
 a img:hover {
   opacity: 0.85;
   -webkit-transition-property: all;
@@ -721,7 +725,7 @@ a img:hover {
   transition-timing-function: ease-in;
 }
 
-/* line 84, ../sass/_content.scss */
+/* line 89, ../sass/_content.scss */
 span.center {
   display: block;
   text-align: center;
@@ -729,12 +733,12 @@ span.center {
   width: 100%;
 }
 
-/* line 91, ../sass/_content.scss */
+/* line 96, ../sass/_content.scss */
 ul {
   margin: 8px 0 8px 25px;
   list-style-type: square;
 }
-/* line 95, ../sass/_content.scss */
+/* line 100, ../sass/_content.scss */
 ul li {
   margin: 8px 0;
 }
