@@ -689,15 +689,22 @@ button.active, button:active, button:hover, .button.active, .button:active, .but
 }
 
 /* line 63, ../sass/_content.scss */
+.owl-carousel .item img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* line 69, ../sass/_content.scss */
 img {
   border: 1px solid #dddddd;
 }
-/* line 66, ../sass/_content.scss */
+/* line 72, ../sass/_content.scss */
 img.full-width {
   width: 100%;
 }
 
-/* line 71, ../sass/_content.scss */
+/* line 77, ../sass/_content.scss */
 a img:hover {
   opacity: 0.85;
   -webkit-transition-property: all;
@@ -714,7 +721,7 @@ a img:hover {
   transition-timing-function: ease-in;
 }
 
-/* line 78, ../sass/_content.scss */
+/* line 84, ../sass/_content.scss */
 span.center {
   display: block;
   text-align: center;
@@ -722,12 +729,12 @@ span.center {
   width: 100%;
 }
 
-/* line 85, ../sass/_content.scss */
+/* line 91, ../sass/_content.scss */
 ul {
   margin: 8px 0 8px 25px;
   list-style-type: square;
 }
-/* line 89, ../sass/_content.scss */
+/* line 95, ../sass/_content.scss */
 ul li {
   margin: 8px 0;
 }
