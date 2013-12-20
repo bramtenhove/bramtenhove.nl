@@ -19,14 +19,14 @@ var app = {
     });
 
     // Start the image slider.
-    if ($.fn.responsiveSlides) {
-      $(".image-set").responsiveSlides({
-        auto: true,
-        speed: 500,
-        timeout: 3500,
-        pager: false,
-        nav: false,
-        pause: true
+    if ($.fn.owlCarousel) {
+      $('.owl-carousel').owlCarousel({
+        lazyLoad: true,
+        singleItem: true,
+        pagination: false,
+        autoHeight: true,
+        autoPlay: true,
+        stopOnHover: true
       });
     }
   }

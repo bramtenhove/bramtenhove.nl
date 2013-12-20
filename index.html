@@ -12,7 +12,8 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="/css/vendor/responsiveslides.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/css/vendor/owl.carousel.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/css/vendor/owl.theme.css" media="screen, projection" rel="stylesheet" type="text/css">
     <script src="/js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body>
@@ -78,11 +79,11 @@
             <h2 class="content-title"><a href="singleblog.html">Wallpaper Wednesday #1</a></h2>
             <p>Tired of the same old wallpapers you are looking at for over a decade now? Try some new ones! I selected some of the best wallpapers that I have collected in over a years time.</p>
 
-            <ul class="image-set">
-              <li><a href="singleblog.html"><img src="images/wallpapers/large/wallpaper1.jpg" /></a></li>
-              <li><a href="singleblog.html"><img src="images/wallpapers/large/wallpaper2.jpg" /></a></li>
-              <li><a href="singleblog.html"><img src="images/wallpapers/large/wallpaper3.jpg" /></a></li>
-            </ul>
+            <div class="owl-carousel">
+              <div class="item"><a href="singleblog.html"><img class="lazyOwl" data-src="images/wallpapers/large/wallpaper1.jpg" /></a></div>
+              <div class="item"><a href="singleblog.html"><img class="lazyOwl"  data-src="images/wallpapers/large/wallpaper2.jpg" /></a></div>
+              <div class="item"><a href="singleblog.html"><img class="lazyOwl"  data-src="images/wallpapers/large/wallpaper3.jpg" /></a></div>
+            </div>
 
             <p>Take a look at the wallpapers by clicking <a href="singleblog.html">here</a>.</p>
 
@@ -143,7 +144,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-    <script src="/js/vendor/responsiveslides.min.js"></script>
+    <script src="/js/vendor/owl.carousel.min.js"></script>
     <script src="/js/main.js"></script>
 
     <script>
