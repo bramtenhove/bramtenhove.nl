@@ -15,7 +15,7 @@ a {
 #main-menu {
 
   #pull-menu {
-    background: url(../images/list.png) no-repeat center center;
+    background: image-url('assets/list.png', false, false) no-repeat center center;
     cursor: pointer;
     height: 24px;
     padding: 2.25em;

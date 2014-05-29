@@ -12,7 +12,9 @@ form {
     font-style: italic;
   }
 
-  input[type=text], textarea {
+  input[type=text],
+  input[type=password],
+  textarea {
     background: #ffffff;
     border: 1px solid #cfcfcf;
     box-sizing: border-box;

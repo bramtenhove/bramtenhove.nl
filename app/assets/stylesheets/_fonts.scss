@@ -2,7 +2,7 @@
  * Fonts of the site is defined here.
  */
 
-@import url("http://fonts.googleapis.com/css?family=Exo+2:500,100italic,800italic");
+@import url("http://fonts.googleapis.com/css?family=Exo+2:500,100italic,700italic");
 
 body {
   color: $default-color;
@@ -60,7 +60,7 @@ h3 {
   &.expose-title {
     color: #fbfbf8;
     font-size: 3.25em;
-    font-weight: 900;
+    font-weight: 700;
     font-style: italic;
     // letter-spacing: 1px;
     margin-bottom: 0;

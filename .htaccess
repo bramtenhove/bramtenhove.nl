@@ -78,6 +78,3 @@ Header set Cache-Control "max-age=172800, proxy-revalidate"
 <FilesMatch "\.(html|htm|php)$"> # 1 minute
 Header set Cache-Control "max-age=60, private, proxy-revalidate"
 </FilesMatch>
-
-# Error documents
-ErrorDocument 404 /errors/404.html

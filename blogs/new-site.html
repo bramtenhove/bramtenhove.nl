@@ -6,14 +6,13 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title></title>
+    <title>Finally, a new website | Bram ten Hove</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-    <link href="/css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <link href="/css/vendor/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script src="/public/javascripts/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -33,7 +32,7 @@
               <div id="pull-menu"></div>
               <ul class="menu clearfix">
                 <li><a href="/" class="active">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/contact.html">Contact</a></li>
               </ul>
             </nav>
           </div>
@@ -42,8 +41,8 @@
 
       <div id="expose" role="banner">
         <div class="wrapper">
-          <h3 class="expose-title">Check out my blog</h3>
-          <h3 class="expose-subtitle">From design elements to code, it’s all there</h3>
+          <h3 class="expose-title">It took some time</h3>
+          <h3 class="expose-subtitle">But I finally launched my new website</h3>
         </div>
       </div>
 
@@ -51,70 +50,23 @@
 
         <div id="main-content" role="main">
           <div class="container blog full-display">
-            <h1 class="content-title"><a href="singleblog2.html">Advanced Drupal hooks</a></h1>
+            <h1 class="content-title"><a href="#">Finally, a new website</a></h1>
             <p>As you might know Drupal is an advanced CMS. Well, it's more of a Content Management Framework, really. Drupal offers the developer quite a lot of freedom when it's about functionality, display or any other important aspect of your website.</p>
 
             <p>Today, we'll look at some of the hooks Drupal makes available for developers. Starting off with hook_module_implements_alter we'll dive into what is known as the more "advanced" side of Drupal development.</p>
 
-            <h2>hook_module_implements_alter()</h2>
+            <h2>So what's the purpose?</h2>
 
             <p>This hook is invoked during module_implements(). A module may implement this hook in order to reorder the implementing modules, which are otherwise ordered by the module's system weight.</p>
 
             <p>Note that hooks invoked using drupal_alter() can have multiple variations (such as hook_form_alter() and hook_form_FORM_ID_alter()). drupal_alter() will call all such variants defined by a single module in turn. For the purposes of hook_module_implements_alter(), these variants are treated as a single hook. Thus, to ensure that your implementation of hook_form_FORM_ID_alter() is called at the right time, you will have to change the order of hook_form_alter() implementation in hook_module_implements_alter().</p>
 
-            <h3>Code</h3>
-            <p>Look at the PHP code! It's being highlighted. Wow!</p>
-
-            <pre class="language-php"><code>function hook_module_implements_alter(&$implementations, $hook) {
-  if ($hook == 'rdf_mapping') {
-    // Move my_module_rdf_mapping() to the end of the list. module_implements()
-    // iterates through $implementations with a foreach loop which PHP iterates
-    // in the order that the items were added, so to move an item to the end of
-    // the array, we remove it and then add it.
-    $group = $implementations['my_module'];
-    unset($implementations['my_module']);
-    $implementations['my_module'] = $group;
-  }
-}</code></pre>
-
-            <p>And not just PHP. Look at that SCSS code, oeeeh pretty!</p>
-
-            <pre class="language-scss"><code>input[type=text], textarea {
-    background: #ffffff;
-    border: 1px solid #cfcfcf;
-    box-sizing: border-box;
-    font-size: 0.8em;
-    font-weight: 400;
-    margin: 1em 0;
-    padding: 8px 12px;
-    @include border-radius(5px, 5px);
-    @include box-shadow(0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset);
-    @include span-columns(1, 1);
-
-    &:hover {
-      @include box-shadow(0 0 0 5px #f0f0f0, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset);
-    }
-  }</code></pre>
-
-            <p>You're kidding, it even highlights SQL?</p>
-
-            <pre class="language-sql"><code>SELECT productId FROM
-(
-  SELECT departmentId, COUNT(*) DeptIDCount FROM #Dept
-  GROUP BY departmentId
-) A JOIN
-(
-  SELECT productId, COUNT(*) ProdIdCount FROM #Prod
-  GROUP BY productId
-) B ON A.departmentId=B.productId AND DeptIDCount=ProdIdCount</code></pre>
-
             <p>I'm amazed. Now I should just start checking out how it highlights lines and shows line numbers, etc. Ah, I just realized this will have to wait a day or two.</p>
 
-            <span class="post-number">#4</span>
+            <span class="post-number">#1</span>
 
             <div class="details">
-              <span class="date-time"><a href="singleblog2.html">Wednesday, June 19, 2013</a></span>
-              <span class="tags"><a href="#">wallpaper</a>, <a href="#">Wallpaper Wednesday</a></span>
+              <span class="date-time"><a href="#">Thursday, May 29, 2014</a></span>
             </div>
           </div>
         </div>
@@ -123,19 +75,13 @@
 
         <aside id="sidebar-right" role="complementary">
           <div class="block container">
-            <form>
-              <input type="text" placeholder="Type your query here and hit enter" />
-            </form>
-          </div>
-
-          <div class="block container">
             <h2 class="block-title">Latest from the lab</h2>
-            <p>Search Krumo is a Drupal module that makes live for developers a lot easier. It enables you to search through those vast arrays Drupal manages to create. <a href="#">Check it out</a></p>
+            <p>Search Krumo is a Drupal module that makes live for developers a lot easier. It enables you to search through those vast arrays Drupal manages to create. <a href="http://drupal.org/project/search_krumo">Check it out on Drupal.org</a></p>
           </div>
 
           <div class="block container">
             <h2 class="block-title">Who's website is this?</h2>
-            <img class="full-width" src="images/me.png" />
+            <img class="full-width" src="/public/images/me.png" />
             <p>My name is Bram ten Hove. I am a passionate webdeveloper that is keen to deliver only the best experience to users by writing awesome code.</p>
 
             <span class="center"><a class="button" href="contact.html">Say hello to me</a></span>
@@ -146,16 +92,15 @@
 
       <div id="footer" role="footer">
         <div class="wrapper">
-          <img class="copyright" src="images/copyright.png" />
+          <img class="copyright" src="/public/images/assets/copyright.png" />
         </div>
       </div>
 
     </div>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
-    <script src="js/vendor/prism.js"></script>
-    <script src="js/main.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/public/javascripts/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="/public/javascripts/main.js"></script>
 
     <script>
       // var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];

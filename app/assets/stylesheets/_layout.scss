@@ -3,7 +3,7 @@
  */
 
 body {
-  background: $default-background url(../images/background.png) repeat;
+  background: $default-background image-url('assets/background.png', false, false) repeat;
 }
 
 .wrapper {
@@ -54,7 +54,7 @@ body {
 }
 
 #logo a {
-  background: url(../images/logo.png);
+  background: image-url('assets/logo.png', false, false);
   float: left;
   height: 94px;
   left: 15px;
@@ -62,7 +62,7 @@ body {
   width: 136px;
 
   &:hover {
-    background: url(../images/logo-red.png);
+    background: image-url('assets/logo-red.png', false, false);
     @include transition-property(all);
     @include transition-duration(350ms);
     @include transition-timing-function(ease-in);
@@ -78,7 +78,7 @@ body {
     border-bottom: 2px solid #dddddd;
     display: block;
     min-height: 175px;
-    @include background(url(../images/noise.png), linear-gradient(left, #556270, #92a5ba));
+    @include background(image-url('assets/noise.png', false, false), linear-gradient(left, #556270, #92a5ba));
   }
 }
 
@@ -100,7 +100,7 @@ body {
   border-top: 2px solid #dddddd;
   margin-top: 30px;
   min-height: 60px;
-  @include background(url(../images/noise.png), linear-gradient(left, #36363a, #36363a));
+  @include background(image-url('assets/noise.png', false, false), linear-gradient(left, #36363a, #36363a));
 
   img.copyright {
     border: none;

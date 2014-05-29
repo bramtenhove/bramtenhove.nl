@@ -6,18 +6,18 @@ require 'susy'
 # live server. Development mode will retain comments and spacing from the
 # original Sass source and adds line numbering comments for easier debugging.
 # environment = :production
-environment = :development
+environment = :production
 
 # In development, we can turn on the FireSass-compatible debug_info.
 firesass = false
 # firesass = true
 
 # Location of the your project's resources.
-css_dir         = "css"
-sass_dir        = "sass"
+css_dir         = "public/stylesheets"
+sass_dir        = "app/assets/stylesheets"
 extensions_dir  = "sass-extensions"
-images_dir      = "images"
-javascripts_dir = "js"
+images_dir      = "public/images"
+javascripts_dir = "public/javascripts"
 
 # Set this to the root of your project. All resource locations above are
 # considered to be relative to this path.
