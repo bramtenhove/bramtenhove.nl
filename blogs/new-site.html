@@ -40,10 +40,7 @@
       </header>
 
       <div id="expose" role="banner">
-        <div class="wrapper">
-          <h3 class="expose-title">It took some time</h3>
-          <h3 class="expose-subtitle">But I finally launched my new website</h3>
-        </div>
+        <div class="expose-image"><img src="/public/images/wallpapers/welder.jpg" /></div>
       </div>
 
       <div id="main" class="column wrapper">
@@ -51,17 +48,17 @@
         <div id="main-content" role="main">
           <div class="container blog full-display">
             <h1 class="content-title"><a href="#">Finally, a new website</a></h1>
-            <p>As you might know Drupal is an advanced CMS. Well, it's more of a Content Management Framework, really. Drupal offers the developer quite a lot of freedom when it's about functionality, display or any other important aspect of your website.</p>
+            <p>So, yesterday I had the plan to finally launch my website. I started designing it about a year ago, thinking about how I could use new techniques to build it. I ended up writing the HTML and CSS first, since that is something I hadn't done in quite awhile.</p>
 
-            <p>Today, we'll look at some of the hooks Drupal makes available for developers. Starting off with hook_module_implements_alter we'll dive into what is known as the more "advanced" side of Drupal development.</p>
+            <p>As time went on, I kind of forget my newly designed website. Then I came across Scala and the Play framework. I had some experience with Java, but this was a whole different mindset. I must say that I was somewhat intrigued by the philosophy behind the language. And so I started porting what I already had done. Due to lack of time I couldn't finish the goals I had with Scala. And again it layed around for awhile gattering digital dust.</p>
 
-            <h2>So what's the purpose?</h2>
+            <p>And then yesterday happened. I decided this personal project was going to end up never seeing the bright light of the internet, unless I would just launch it. I must say that putting something personal into the bright light of the internet is a bit hard. You're always trying to make it absolutely perfect before letting anyone else take a look. While this strive for so-called perfection is good, it should not stay in the way of launching projects.</p>
 
-            <p>This hook is invoked during module_implements(). A module may implement this hook in order to reorder the implementing modules, which are otherwise ordered by the module's system weight.</p>
+            <p>So, here it is, my new website! It's in plain HTML, responsive and has a tiny bit of JavaScript. It's nothing fancy, but now that it is live I have a greater incentive to make it more awesome.</p>
 
-            <p>Note that hooks invoked using drupal_alter() can have multiple variations (such as hook_form_alter() and hook_form_FORM_ID_alter()). drupal_alter() will call all such variants defined by a single module in turn. For the purposes of hook_module_implements_alter(), these variants are treated as a single hook. Thus, to ensure that your implementation of hook_form_FORM_ID_alter() is called at the right time, you will have to change the order of hook_form_alter() implementation in hook_module_implements_alter().</p>
+            <p>In the coming time I will start writing more of these blog articles. Subjects will mostly be about webdevelopment in the broadest sense of the word. And since I have quite a wallpaper collection, you can expect some really nice wallpapers as well.</p>
 
-            <p>I'm amazed. Now I should just start checking out how it highlights lines and shows line numbers, etc. Ah, I just realized this will have to wait a day or two.</p>
+            <p>Thanks for dropping by, come again soon. And although leaving a comment isn't yet possible you can always try the <a href="/contact.html">contact page</a> ;)</p>
 
             <span class="post-number">#1</span>
 
@@ -81,10 +78,10 @@
 
           <div class="block container">
             <h2 class="block-title">Who's website is this?</h2>
-            <img class="full-width" src="/public/images/me.png" />
-            <p>My name is Bram ten Hove. I am a passionate webdeveloper that is keen to deliver only the best experience to users by writing awesome code.</p>
+            <img class="full-width" src="/public/images/me.jpg" />
+            <p>My name is Bram ten Hove. I am a passionate webdeveloper that tries to stay curious and learn new things. Drupal, JavaScript, privacy, security, performance.</p>
 
-            <span class="center"><a class="button" href="contact.html">Say hello to me</a></span>
+            <span class="center"><a class="button" href="/contact.html">Say hello to me</a></span>
           </div>
         </aside>
 
