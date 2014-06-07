@@ -1,3 +1,36 @@
+<?php
+$errors = array();
+
+// If the form was submitted, let's validate and send stuff.
+if (isset($_POST['submit'])) {
+  require_once 'app/contactform.php';
+
+  $form_handler = new FormHandler();
+  $form_handler->setFormValues($_POST);
+
+  // Try to validate the form.
+  try {
+    $form_handler->validateForm();
+  } catch (Exception $e) {
+      echo 'Caught exception: ',  $e->getMessage(), "\n";
+  }
+
+  // Get any errors.
+  $errors = $form_handler->getErrors();
+
+  // If there are no errors, try sending the e-mail.
+  if (empty($errors)) {
+    $form_handler->sendMail();
+
+    $send_result = $form_handler->getSendResult();
+
+    // Clear the form values.
+    empty($_POST);
+  }
+}
+
+?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -12,7 +45,6 @@
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
     <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-    <script src="/public/javascripts/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -21,7 +53,6 @@
 
       ga('create', 'UA-26432716-1', 'bramtenhove.nl');
       ga('send', 'pageview');
-
     </script>
   </head>
   <body>
@@ -42,7 +73,7 @@
               <div id="pull-menu"></div>
               <ul class="menu clearfix">
                 <li><a href="/">Blog</a></li>
-                <li><a href="/contact.html" class="active">Contact</a></li>
+                <li><a href="/contact" class="active">Contact</a></li>
               </ul>
             </nav>
           </div>
@@ -51,8 +82,13 @@
 
       <div id="expose" role="banner">
         <div class="wrapper">
+        <?php if (isset($send_result) && !empty($send_result)): ?>
+          <h3 class="expose-title">Thanks for your message!</h3>
+          <h3 class="expose-subtitle"><?php echo $send_result; ?></h3>
+        <?php else: ?>
           <h3 class="expose-title">Send me a message</h3>
           <h3 class="expose-subtitle">Let's come in contact with each other</h3>
+        <?php endif;?>
         </div>
       </div>
 
@@ -61,19 +97,24 @@
         <div id="main-content" role="main">
           <div class="container">
             <h1 class="content-title">Contact me</h1>
-            <p>Feel free to drop me a line using the form below, be aware that it <a href="blogs/new-site.html">doesn't work yet</a>.</p>
+            <p>Feel free to drop me a line using the form below, be aware that it <a href="blogs/new-site">doesn't work yet</a>.</p>
 
             <p>You can also take a look at my <a href="http://linkedin.com/in/bramth" rel="nofollow">LinkedIn</a> or find me on <a href="http://twitter.com/bramtenhove" rel="nofollow">Twitter</a>.</p>
 
-            <form class="inline">
+            <form class="inline" action="/contact" method="post">
               <label for="fullname">Name</label>
-              <input type="text" name="fullname" placeholder="Let me know your name" />
+              <?php echo isset($errors['fullname']) ? '<div class="error">' . $errors['fullname'] . '</div>' : '' ?>
+              <input type="text" name="fullname" <?php echo isset($errors['fullname']) ? 'class="error"' : '' ?> placeholder="Let me know your name" value="<?php echo isset($_POST['fullname']) ? $_POST['fullname'] : '' ?>" />
 
               <label for="emailaddress">E-mail address</label>
-              <input type="text" name="emailaddress" placeholder="So I can respond to your message" />
+              <?php echo isset($errors['emailaddress']) ? '<div class="error">' . $errors['emailaddress'] . '</div>' : '' ?>
+              <input type="text" name="emailaddress" <?php echo isset($errors['emailaddress']) ? 'class="error"' : '' ?> placeholder="So I can respond to your message" value="<?php echo isset($_POST['emailaddress']) ? $_POST['emailaddress'] : '' ?>" />
 
               <label for="message">Message</label>
-              <textarea name="message" placeholder="Type in your message"></textarea>
+              <?php echo isset($errors['message']) ? '<div class="error">' . $errors['message'] . '</div>' : '' ?>
+              <textarea name="message" <?php echo isset($errors['message']) ? 'class="error"' : '' ?> placeholder="Type in your message" value="<?php echo isset($_POST['message']) ? $_POST['message'] : '' ?>"></textarea>
+
+              <input type="submit" name="submit" value="Send!" />
             </form>
             </ul>
           </div>
