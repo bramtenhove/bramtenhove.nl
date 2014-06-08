@@ -84,20 +84,35 @@ if (isset($_POST['submit'])) {
         </div>
       </header>
 
-      <div id="expose" role="banner">
+      <?php if (isset($send_result) && !empty($send_result)): ?>
+      <div id="expose" role="banner" class="success">
         <div class="wrapper">
-        <?php if (isset($send_result) && !empty($send_result)): ?>
-          <h3 class="expose-title success">Thanks for your message!</h3>
+          <h3 class="expose-title">Thanks for your message!</h3>
           <h3 class="expose-subtitle"><?php echo $send_result; ?></h3>
-        <?php elseif (isset($send_error) && !empty($send_error)): ?>
-          <h3 class="expose-title error">An error occured!</h3>
-          <h3 class="expose-subtitle"><?php echo $send_error; ?></h3>
-        <?php else: ?>
-          <h3 class="expose-title">Send me a message</h3>
-          <h3 class="expose-subtitle">Let's come in contact with each other</h3>
-        <?php endif;?>
         </div>
       </div>
+      <?php elseif (isset($send_error) && !empty($send_error)): ?>
+      <div id="expose" role="banner" class="error">
+        <div class="wrapper">
+          <h3 class="expose-title">An error occured!</h3>
+          <h3 class="expose-subtitle"><?php echo $send_error; ?></h3>
+        </div>
+      </div>
+      <?php elseif (isset($errors) && !empty($errors)): ?>
+      <div id="expose" role="banner" class="error">
+        <div class="wrapper">
+          <h3 class="expose-title">Couldn't send your message</h3>
+          <h3 class="expose-subtitle">Please check what you typed in the form!</h3>
+        </div>
+      </div>
+      <?php else: ?>
+      <div id="expose" role="banner">
+        <div class="wrapper">
+          <h3 class="expose-title">Send me a message</h3>
+          <h3 class="expose-subtitle">Let's come in contact with each other</h3>
+        </div>
+      </div>
+      <?php endif;?>
 
       <div id="main" class="column wrapper">
 

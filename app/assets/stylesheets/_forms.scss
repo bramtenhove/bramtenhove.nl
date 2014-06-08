@@ -23,6 +23,7 @@ form {
     font-weight: 400;
     margin: 1em 0;
     padding: 8px 12px;
+    @include box-sizing(border-box);
     @include border-radius(5px, 5px);
     @include box-shadow(0 0 0 5px #f7f7f7, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset);
     @include span-columns(1, 1);
@@ -32,7 +33,7 @@ form {
     }
 
     &.error {
-      @include box-shadow(0 0 0 5px #f0f0f0, rgba(193, 62, 62, 0.75) 0 0 3px 1px inset);
+      @include box-shadow(0 0 0 5px #f0f0f0, rgba(167, 37, 37, 0.75) 0 0 3px 1px inset);
     }
   }
 

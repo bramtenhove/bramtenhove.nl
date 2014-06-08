@@ -120,7 +120,7 @@ class FormHandler {
       $this->sendResult = 'It is scheduled to be send soon, I will reply asap';
     }
     else {
-      throw new Exception('Message could not be send.');
+      throw new Exception('Something went wrong, your message could not be send');
     }
   }
 }

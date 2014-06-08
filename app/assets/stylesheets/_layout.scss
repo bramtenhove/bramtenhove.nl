@@ -79,6 +79,14 @@ body {
     display: block;
     min-height: 175px;
     @include background(image-url('assets/noise.png', false, false), linear-gradient(left, #556270, #92a5ba));
+
+    &.success {
+      @include background(image-url('assets/noise.png', false, false), linear-gradient(left, #118d35, $success-color));
+    }
+
+    &.error {
+      @include background(image-url('assets/noise.png', false, false), linear-gradient(left, #a72525, $error-color));
+    }
   }
 }
 
