@@ -53,7 +53,7 @@ class FormHandler {
   public function sendMail() {
     date_default_timezone_set('Europe/Amsterdam');
 
-    $this->sendMandrillRequest();
+    $this->sendMandrillRequest('prod');
   }
 
   private function sendMandrillRequest($environment = 'test') {
