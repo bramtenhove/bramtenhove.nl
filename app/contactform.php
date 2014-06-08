@@ -110,7 +110,10 @@ class FormHandler {
     // The result from Mandrill.
     $result = json_decode(curl_exec($ch));
 
-    if (isset($result[0]->status) && $result[0]->status == 'sent') {
+    if (isset($result->status) && $result->status == 'error') {
+      throw new Exception('Something went wrong, your message could not be send');
+    }
+    elseif (isset($result[0]->status) && $result[0]->status == 'sent') {
       $this->sendResult = 'It was sent successfully, I will reply asap';
     }
     elseif (isset($result[0]->status) && $result[0]->status == 'queued') {
