@@ -62,9 +62,12 @@ h3 {
     font-size: 3.25em;
     font-weight: 700;
     font-style: italic;
-    // letter-spacing: 1px;
     margin-bottom: 0;
     padding: 35px 0 0 65px;
+
+    &.error {
+      color: $default-color;
+    }
   }
 
   &.expose-subtitle {

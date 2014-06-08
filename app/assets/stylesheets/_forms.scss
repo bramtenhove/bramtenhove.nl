@@ -30,6 +30,10 @@ form {
     &:hover {
       @include box-shadow(0 0 0 5px #f0f0f0, rgba(0, 0, 0, 0.1) 0 0 3px 1px inset);
     }
+
+    &.error {
+      @include box-shadow(0 0 0 5px #f0f0f0, rgba(193, 62, 62, 0.75) 0 0 3px 1px inset);
+    }
   }
 
   textarea {
