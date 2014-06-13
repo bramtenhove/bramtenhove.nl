@@ -57,13 +57,28 @@ class FormHandler {
   }
 
   private function sendMandrillRequest($environment = 'test') {
+    // Require GenderGuess class.
+    require_once 'gender.php';
+
+    $ip = $_SERVER['REMOTE_ADDR'];
+
+    // Instantiate new GenderGuess object.
+    $genderGuesser = new GenderGuess();
+    // Give me the gender!
+    try {
+      $gender = $genderGuesser->guessGender($this->formValues['fullname'], $ip);
+    } catch (Exception $e) {
+      $gender = 'Error occured, no detection possible.';
+    }
+
     // Message in HTML.
     $text = '<p>Dear Bram,</p>
     <p>A message was send through your contact form. You can read all about it down here.</p>
     <p><strong>Message:</strong><br />
     ' . nl2br($this->formValues['message']) . '</p>
     <p><strong>More details:</strong><br />
-    IP address: ' . $_SERVER['REMOTE_ADDR'] . '<br />
+    Gender: ' . $gender . '<br />
+    IP address: ' . $ip . '<br />
     Date and time: ' . date('j F Y - H:i') .'</p>';
 
     // Check which Mandrill API key we should use.
@@ -110,7 +125,13 @@ class FormHandler {
     // The result from Mandrill.
     $result = json_decode(curl_exec($ch));
 
-    if (isset($result[0]->status) && $result[0]->status == 'sent') {
+    // Close curl request.
+    curl_close($ch);
+
+    if (isset($result->status) && $result->status == 'error') {
+      throw new Exception('Something went wrong, your message could not be send');
+    }
+    elseif (isset($result[0]->status) && $result[0]->status == 'sent') {
       $this->sendResult = 'It was sent successfully, I will reply asap';
     }
     elseif (isset($result[0]->status) && $result[0]->status == 'queued') {

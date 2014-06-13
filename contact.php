@@ -12,7 +12,7 @@ if (isset($_POST['submit'])) {
   try {
     $form_handler->validateForm();
   } catch (Exception $e) {
-      echo 'Caught exception: ',  $e->getMessage(), "\n";
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
   }
 
   // Get any errors.
@@ -32,7 +32,6 @@ if (isset($_POST['submit'])) {
     }
   }
 }
-
 ?>
 
 <!DOCTYPE html>
