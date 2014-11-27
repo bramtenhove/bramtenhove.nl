@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Search Krumo | Bram ten Hove</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <link href="/public/stylesheets/vendor/prism.css" media="screen, projection" rel="stylesheet" type="text/css">
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-26432716-1', 'bramtenhove.nl');
+      ga('send', 'pageview');
+    </script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div id="page">
+
+      <header id="header" role="header">
+        <div class="wrapper clearfix">
+          <div id="logo">
+            <a href="/"></a>
+          </div>
+
+          <div class="navigation">
+            <nav id="main-menu" role="navigation">
+              <div id="pull-menu"></div>
+              <ul class="menu clearfix">
+                <li><a href="/" class="active">Blog</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <div id="expose" role="banner">
+        <div class="wrapper">
+          <h3 class="expose-title">Search Krumo</h3>
+          <h3 class="expose-subtitle">Time-saving Drupal module for lazy developers</h3>
+        </div>
+      </div>
+
+      <div id="main" class="column wrapper">
+
+        <div id="main-content" role="main">
+          <div class="container blog full-display">
+            <h1 class="content-title"><a href="#">Search Krumo module</a></h1>
+            <p>When I first started working with Drupal I was overwhelmed with the extremely large arrays it produces. In the beginning I used print_r() and var_dump() to get information out of those arrays. You might know that finding things in there is hard, but getting the correct path to the element deep in the array is almost undoable.</p>
+
+            <p>And since I wasn’t so familiar with Drupal yet, I wrote a simple JavaScript solution that worked pretty good.</p>
+
+            <h2>Enough introduction</h2>
+
+            <p>So, enough introduction, what does it do? <a href="https://www.drupal.org/project/search_krumo" rel="nofollow">Search Krumo</a> kicks in when someone uses a debug function from the Devel module (dpm(), kpr(), and more). A default krumo output will look something like this.</p>
+
+            <div class="image">
+              <img src="/public/images/krumo_output.jpg" alt="Krumo output using a debug function like dpm()" />
+            </div>
+
+            <p>Search Krumo adds a search form using JavaScript just before the krumo output. The query you type in the form is used to search through the krumo output. It will match both keys and values. It tries to find strings that contain the query, it does not search for exact matches.</p>
+
+            <p>The module also adds a "Copy path" functionality which enables a developer to copy the exact path to the element. For example you would be able to copy the following, instead of typing it all:</p>
+            <pre class="language-php"><code>$variables['page']['sidebar_first']['system_navigation']['#5']->value['safe']</code></pre>
+            <p>You’ll be amazed at how much time this saves you each day.</p>
+
+            <div class="image">
+              <img src="/public/images/search_krumo.jpg" alt="Search Krumo in action" />
+            </div>
+
+            <h2>Give it a spin</h2>
+
+            <p>Take a look at the module on <a href="https://www.drupal.org/project/search_krumo" rel="nofollow">Drupal.org</a> and join the other 13000+ developers who downloaded the module. Also check out <a href="https://www.youtube.com/watch?v=_5_Nh7jTLtY" rel="nofollow">this video</a> that shows what Search Krumo can do.</p>
+
+            <p><a href="/contact">Let me know</a> if you like the module. If you have any ideas about a Drupal 8 version for Kint, you can create an issue on <a href="https://www.drupal.org/project/search_krumo" rel="nofollow">the project page</a>.</p>
+
+            <p>&nbsp;</p>
+
+            <h3>Search Krumo nominated for an award</h3>
+
+            <p>The Dutch Drupal community called the Splash Awards into life and Search Krumo is <a href="http://www.splashawards.org/nl/case/search-krumo">one of the nominees</a> in the section 'Modules'. Awesome!</p>
+
+            <span class="post-number">#4</span>
+
+            <div class="details">
+              <span class="date-time"><time datetime="2014-11-27">Thursday, November 27, 2014</time></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="separator"></div>
+
+        <aside id="sidebar-right" role="complementary">
+          <div class="block container">
+            <h2 class="block-title">Latest from the lab</h2>
+            <p>Search Krumo is a Drupal module that makes live for developers a lot easier. It enables you to search through those vast arrays Drupal manages to create. <a href="https://www.drupal.org/project/search_krumo" rel="nofollow">Check it out on Drupal.org</a></p>
+          </div>
+
+          <div class="block container">
+            <h2 class="block-title">Who's website is this?</h2>
+            <img class="full-width" src="/public/images/me.jpg" />
+            <p>My name is Bram ten Hove. I am a passionate webdeveloper that tries to stay curious and learn new things. Drupal, JavaScript, privacy, security, performance.</p>
+
+            <span class="center"><a class="button" href="/contact">Say hello to me</a></span>
+          </div>
+        </aside>
+
+      </div>
+
+      <div id="footer" role="footer">
+        <div class="wrapper">
+          <img class="copyright" src="/public/images/assets/copyright.png" />
+        </div>
+      </div>
+
+    </div>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/public/javascripts/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+    <script src="/public/javascripts/vendor/prism.js"></script>
+    <script src="/public/javascripts/main.js"></script>
+  </body>
+</html>
