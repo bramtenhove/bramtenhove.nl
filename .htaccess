@@ -115,6 +115,6 @@ Options +FollowSymLinks
 <FilesMatch "\.(xml|txt|css|js)$"> # 2 days
   Header set Cache-Control "max-age=172800, proxy-revalidate"
 </FilesMatch>
-<FilesMatch "\.(html|htm|php)$"> # 1 minute
-  Header set Cache-Control "max-age=60, private, proxy-revalidate"
+<FilesMatch "\.(html|htm|php)$"> # 10 minutes
+  Header set Cache-Control "max-age=600, private, proxy-revalidate"
 </FilesMatch>
