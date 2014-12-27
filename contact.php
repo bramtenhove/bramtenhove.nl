@@ -75,6 +75,7 @@ if (isset($_POST['submit'])) {
               <div id="pull-menu"></div>
               <ul class="menu clearfix">
                 <li><a href="/">Blog</a></li>
+                <li><a href="/about">About</a></li>
                 <li><a href="/contact" class="active">Contact</a></li>
               </ul>
             </nav>
@@ -143,7 +144,7 @@ if (isset($_POST['submit'])) {
           <div class="block container">
             <h2 class="block-title">Who are you contacting?</h2>
             <img class="full-width" src="/public/images/me.jpg" />
-            <p>My name is Bram ten Hove. I am a passionate webdeveloper that tries to stay curious and learn new things. Drupal, JavaScript, privacy, security, performance.</p>
+            <p>My name is <a href="/about">Bram ten Hove</a>. I am a passionate webdeveloper that tries to stay curious and learn new things. Drupal, JavaScript, privacy, security, performance.</p>
 
             <p>I have quite a lot of experience using PHP, jQuery and the opensource CMS <a href="http://drupal.org">Drupal</a>.</p>
           </div>
