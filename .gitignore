@@ -17,3 +17,5 @@ sublime-project
 
 # SASS
 .sass-cache
+
+node_modules

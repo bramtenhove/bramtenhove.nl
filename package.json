@@ -1,0 +1,21 @@
+{
+    "name": "bramtenhove.nl",
+    "version": "1.0.0",
+    "private": true,
+    "devDependencies": {
+        "gulp": "*",
+        "beepbeep": "*",
+        "gulp-util": "*",
+        "gulp-compass": "*",
+        "gulp-autoprefixer": "*",
+        "gulp-imagemin": "*",
+        "gulp-plumber": "*",
+        "gulp-cache": "*",
+        "gulp-combine-media-queries": "*",
+        "gulp-notify": "*",
+        "gulp-rename": "*",
+        "gulp-uglify": "*",
+        "gulp-minify-css": "*",
+        "gulp-concat": "*"
+    }
+}

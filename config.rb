@@ -1,6 +1,6 @@
 # First, require any additional compass plugins installed on your system.
 require 'susy'
-# require 'breakpoint'
+require 'breakpoint'
 
 # Toggle this between :development and :production when deploying the CSS to the
 # live server. Development mode will retain comments and spacing from the
