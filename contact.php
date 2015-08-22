@@ -47,6 +47,7 @@ if (isset($_POST['submit'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+    <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -160,7 +161,6 @@ if (isset($_POST['submit'])) {
 
     </div>
 
-    <link href="/public/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" />
     <link href="http://fonts.googleapis.com/css?family=Exo+2:500,100italic,700italic" rel="stylesheet" type="text/css" />
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
