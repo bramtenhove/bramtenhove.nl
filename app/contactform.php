@@ -97,9 +97,7 @@ class FormHandler {
       ->setFromName($this->formValues['fullname'])
       ->setReplyTo($this->formValues['emailaddress'])
       ->setSubject('Bramtenhove.nl: ' . $this->formValues['fullname'] . ' contacted you')
-      ->setHtml($text)
-      ->removeHeader('X-Transport')
-      ->removeHeader('X-Sent-Using');
+      ->setHtml($text);
 
     try {
       $result = $sendgrid->send($email);
