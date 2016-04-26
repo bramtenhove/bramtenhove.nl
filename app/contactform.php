@@ -1,11 +1,13 @@
 <?php
 
+require("app/vendor/sendgrid/sendgrid-php.php");
+
 class FormHandler {
   protected $mailFrom = 'no-reply@bramtenhove.nl';
   protected $mailTo = 'bram@bramtenhove.nl';
   protected $mailToName = 'Bram ten Hove';
-  protected $mandrillApiTestKey = '6U1sNcxgVK_YqkvvGGjPUw';
-  protected $mandrillApiProdKey = 'XPK4eWOo1E2rwaNx1A7DmQ';
+  protected $sendgridApiTestKey = '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';
+  protected $sendgridApiProdKey = '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';
   protected $sendResult;
   protected $errors = array();
   protected $formValues = array();
@@ -53,10 +55,10 @@ class FormHandler {
   public function sendMail() {
     date_default_timezone_set('Europe/Amsterdam');
 
-    $this->sendMandrillRequest('prod');
+    $this->sendSendGridRequest('prod');
   }
 
-  private function sendMandrillRequest($environment = 'test') {
+  private function sendSendGridRequest($environment = 'test') {
     // Require GenderGuess class.
     require_once 'gender.php';
 
@@ -83,64 +85,25 @@ class FormHandler {
 
     // Check which Mandrill API key we should use.
     if ($environment == 'prod') {
-      $mandrillKey = $this->mandrillApiProdKey;
+      $sendgrid = new SendGrid($this->sendgridApiProdKey);
     }
     else {
-      $mandrillKey = $this->mandrillApiTestKey;
+      $sendgrid = new SendGrid($this->sendgridApiTestKey);
     }
 
-    $formatted_request = array(
-      'key' => $mandrillKey,
-      'message' => array(
-        'html' => $text,
-        'subject' => 'Bramtenhove.nl: ' . $this->formValues['fullname'] . ' contacted you',
-        'from_email' => $this->mailFrom,
-        'from_name' => $this->formValues['fullname'],
-        'to' => array(
-          array(
-            'email' => $this->mailTo,
-            'name' => $this->mailToName,
-            'type' => 'to',
-          ),
-        ),
-        'headers' => array(
-          'Reply-To' => $this->formValues['emailaddress'],
-        ),
-      ),
-    );
+    $email = new SendGrid\Email();
+    $email->addTo($this->mailTo, $this->mailToName)
+      ->setFrom($this->mailFrom)
+      ->setFromName($this->formValues['fullname'])
+      ->setReplyTo($this->formValues['emailaddress'])
+      ->setSubject('Bramtenhove.nl: ' . $this->formValues['fullname'] . ' contacted you')
+      ->setHtml($text);
 
-    // Encode it to JSON.
-    $json_request = json_encode($formatted_request);
-
-    // Make the API request.
-    $ch = curl_init('https://mandrillapp.com/api/1.0/messages/send.json');
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $json_request);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-      'Content-Type: application/json',
-      'Content-Length: ' . strlen($json_request))
-    );
-
-    // The result from Mandrill.
-    $result = json_decode(curl_exec($ch));
-
-    // Close curl request.
-    curl_close($ch);
-
-    if (isset($result->status) && $result->status == 'error') {
-      throw new Exception('Something went wrong, your message could not be send');
-    }
-    elseif (isset($result[0]->status) && $result[0]->status == 'sent') {
+    try {
+      $result = $sendgrid->send($email);
       $this->sendResult = 'It was sent successfully, I will reply asap';
     }
-    elseif (isset($result[0]->status) && $result[0]->status == 'queued') {
-      $this->sendResult = 'It is queued for sending, I will reply asap';
-    }
-    elseif (isset($result[0]->status) && $result[0]->status == 'scheduled') {
-      $this->sendResult = 'It is scheduled to be send soon, I will reply asap';
-    }
-    else {
+    catch(\SendGrid\Exception $e) {
       throw new Exception('Something went wrong, your message could not be send');
     }
   }
