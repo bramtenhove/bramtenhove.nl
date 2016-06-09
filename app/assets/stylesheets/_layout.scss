@@ -61,6 +61,12 @@ body {
   position: relative;
   width: 136px;
 
+  &:before {
+    background: image-url('assets/logo-red.png', false, false);
+    content: ' ';
+    display: none;
+  }
+
   &:hover {
     background: image-url('assets/logo-red.png', false, false);
     @include transition-property(all);
