@@ -59,12 +59,19 @@
 
         <div id="main-content" role="main">
           <div class="container full-display">
-            <h1 class="content-title"><a href="#">The </a></h1>
-            <p>I started experimenting a little bit with the <a href="https://www.microsoft.com/cognitive-services/en-us/emotion-api">Emotion API</a> from Microsoft. Below you can find a simple app I made using the Emotion API.</p>
+            <h1 class="content-title"><a href="#">A simple demo app</a></h1>
+            <p>I started experimenting a little bit with the <a href="https://www.microsoft.com/cognitive-services/en-us/emotion-api" rel="nofollow">Emotion API</a> from Microsoft. Below you can find a simple app I made using the Emotion API inspired by <a href="http://whatcat.azurewebsites.net" rel="nofollow">Which cat are you?</a>.</p>
 
-            <p>&nbsp;</p>
+            <div id="emotion-app">
+              <form class="inline" action="#" method="post">
+                <label for="image">Image URL</label>
+                <input type="text" name="image" placeholder="http://example.com/image.jpg" value="" />
 
-            <div id="emotion-app">Loading...</div>
+                <input type="submit" name="submit" value="What bear am I?" />
+              </form>
+
+              <div class="results"></div>
+            </div>
 
           </div>
         </div>

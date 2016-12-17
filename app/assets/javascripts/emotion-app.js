@@ -1,34 +1,75 @@
 var emotionApp = {
+  wrapper: '#emotion-app',
 
   onReady: function() {
-    var wrapper = '#emotion-app';
-
     // Detect the wrapper div we will place our content in.
-    if ($(wrapper).length > 0) {
-      var subscriptionKey = '5b7211ee8d554584b33ac05dad6d2e49';
-      var params = {};
-      var body = '{url: "http://petapixel.com/assets/uploads/2012/10/haunted-6.jpg"}';
+    if ($(emotionApp.wrapper).length > 0) {
+      $('form', emotionApp.wrapper).submit(function(e) {
+        e.preventDefault();
 
-      // Ajax request to the API.
-      $.ajax({
-        url: "https://api.projectoxford.ai/emotion/v1.0/recognize?" + $.param(params),
-        beforeSend: function(xhrObj){
-          // Request headers.
-          xhrObj.setRequestHeader("Content-Type", "application/json");
-          xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-        },
-        type: "POST",
-        // Request body.
-        data: body,
-      })
-      .done(function(data) {
-        console.log(data);
-      })
-      .fail(function() {
-        alert("error");
+        $('.message', emotionApp.wrapper).remove();
+
+        var pattern = /^(http|https)?:\/\/[a-zA-Z0-9-\.]+\.[a-z]{2,4}/;
+        if (pattern.test($('input[name=image]').val())) {
+          console.log(e);
+          emotionApp.submitForm($('input[name=image]').val());
+        }
+        else {
+          $(emotionApp.wrapper).prepend('<div class="message error">sadas</div>');
+        }
       });
     }
-  }
+  },
+
+  submitForm: function(imageUrl) {
+    var subscriptionKey = '5b7211ee8d554584b33ac05dad6d2e49';
+    var params = {};
+    var body = '{url: "' + imageUrl + '"}';
+
+    // Ajax request to the API.
+    $.ajax({
+      url: "https://api.projectoxford.ai/emotion/v1.0/recognize?" + $.param(params),
+      beforeSend: function(xhrObj){
+        // Request headers.
+        xhrObj.setRequestHeader("Content-Type", "application/json");
+        xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+
+        // Indicate loading.
+        $('.results', emotionApp.wrapper).html('Calculating emotion...');
+      },
+      type: "POST",
+      // Request body.
+      data: body,
+    })
+    .done(function(data) {
+      console.log(data);
+
+      // If we have data to work with, go show it.
+      if (data.length > 0) {
+        $('.results', emotionApp.wrapper).html('<p><img src="' + imageUrl + '" width="" /></p><div class="scores"></div>');
+
+        $.each(data, function(index, face) {
+          var output = '<div class="face"><ul>';
+
+          $.each(face.scores, function(emotion, score) {
+            output += '<li>' + emotion + ': ' + score + '</li>';
+          });
+
+          output += '</ul></div> <br /><br />';
+
+          $('.results .scores', emotionApp.wrapper).append(output);
+        });
+      }
+      else {
+        $(emotionApp.wrapper).prepend('<div class="message error">The provided image could not processed, please try again with a different image.</div>');
+        $('.results', emotionApp.wrapper).html('');
+      }
+    })
+    .fail(function() {
+      $(emotionApp.wrapper).prepend('<div class="message error">The provided image could not processed, please try again with a different image.</div>');
+      $('.results', emotionApp.wrapper).html('');
+    });
+  },
 
 };
 
