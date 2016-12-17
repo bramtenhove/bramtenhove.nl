@@ -15,7 +15,7 @@ var emotionApp = {
           emotionApp.submitForm($('input[name=image]').val());
         }
         else {
-          $('.results', emotionApp.wrapper).prepend('<div class="message error">Please provide a valid URL.</div>');
+          $('.results', emotionApp.wrapper).prepend('<div class="message error">Please provide a valid image URL.</div>');
         }
       });
     }
@@ -42,8 +42,6 @@ var emotionApp = {
       data: body,
     })
     .done(function(data) {
-      console.log(data);
-
       // If we have data to work with, go show it.
       if (data.length > 0) {
         $('.results', emotionApp.wrapper).html('<p><img src="' + imageUrl + '" width="100%" /></p><div class="scores"></div>');
