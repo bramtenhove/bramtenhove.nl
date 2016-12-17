@@ -55,7 +55,7 @@ var emotionApp = {
         emotion = Object.keys(data[0].scores).reduce(function(a, b){ return data[0].scores[a] > data[0].scores[b] ? a : b });
 
         // Return the emotion to the visitor.
-        $('.results .scores', emotionApp.wrapper).append('<div class="face">Your emotion is <strong>' + emotion + '</strong>.</div>');
+        $('.results .scores', emotionApp.wrapper).append('<div class="face">Your emotion is ' + emotion + '.</div>');
       }
       else {
         // If we haven't had any good results back, throw an error.
