@@ -15,7 +15,7 @@ var emotionApp = {
           emotionApp.submitForm($('input[name=image]').val());
         }
         else {
-          $(emotionApp.wrapper).prepend('<div class="message error">sadas</div>');
+          $('.results', emotionApp.wrapper).prepend('<div class="message error">Please provide a valid URL.</div>');
         }
       });
     }
@@ -61,13 +61,13 @@ var emotionApp = {
         });
       }
       else {
-        $(emotionApp.wrapper).prepend('<div class="message error">The provided image could not processed, please try again with a different image.</div>');
         $('.results', emotionApp.wrapper).html('');
+        $('.results', emotionApp.wrapper).prepend('<div class="message error">The provided image could not processed, please try again with a different image.</div>');
       }
     })
     .fail(function() {
-      $(emotionApp.wrapper).prepend('<div class="message error">The provided image could not processed, please try again with a different image.</div>');
       $('.results', emotionApp.wrapper).html('');
+      $('.results', emotionApp.wrapper).prepend('<div class="message error">The provided image could not processed, please try again with a different image.</div>');
     });
   },
 
