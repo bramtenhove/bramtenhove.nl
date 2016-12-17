@@ -46,7 +46,7 @@ var emotionApp = {
 
       // If we have data to work with, go show it.
       if (data.length > 0) {
-        $('.results', emotionApp.wrapper).html('<p><img src="' + imageUrl + '" width="" /></p><div class="scores"></div>');
+        $('.results', emotionApp.wrapper).html('<p><img src="' + imageUrl + '" width="100%" /></p><div class="scores"></div>');
 
         $.each(data, function(index, face) {
           var output = '<div class="face"><ul>';
