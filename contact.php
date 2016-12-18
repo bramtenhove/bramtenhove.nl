@@ -161,7 +161,7 @@ if (isset($_POST['submit'])) {
 
     </div>
 
-    <link href="http://fonts.googleapis.com/css?family=Exo+2:500,100italic,700italic" rel="stylesheet" type="text/css" />
+    <link href="//fonts.googleapis.com/css?family=Exo+2:500,100italic,700italic" rel="stylesheet" type="text/css" />
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="/public/javascripts/vendor/jquery-1.11.1.min.js"><\/script>')</script>
