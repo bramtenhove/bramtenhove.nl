@@ -8,16 +8,15 @@ Icon?
 Thumbs.db
 ._*
 
-# Sublime generated files
+# IDE generated files
 sublime-project
 *.sublime-project
 *.sublime-workspace
 *.sublime-projectcompletions
 *.sublime-*
+.idea
 
 # SASS
 .sass-cache
 
 node_modules
-
-.idea
