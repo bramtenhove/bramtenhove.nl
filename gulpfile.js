@@ -66,7 +66,7 @@ var onError = function(err) {
 // At the end we check if we should inject new styles in the browser
 // ===================================================
 
-gulp.task('styles', ['clean:css'], function () {
+gulp.task('styles', ['clean:css', 'copy-css-framework'], function () {
   return gulp.src(sassFiles)
     .pipe($.sass(options.scss).on('error', sass.logError))
     .pipe($.plumber({ errorHandler: onError }) )
@@ -75,6 +75,14 @@ gulp.task('styles', ['clean:css'], function () {
     .pipe($.rename({dirname: ''}))
     .pipe($.size({showFiles: true}))
     .pipe(gulp.dest(options.css))
+});
+
+gulp.task('copy-css-framework', function () {
+  gulp.src('node_modules/milligram/dist/milligram.min.css')
+    .pipe(gulp.dest('assets/css/vendor/milligram/'));
+
+  gulp.src('node_modules/normalize.css/normalize.css')
+    .pipe(gulp.dest('assets/css/vendor/normalize.css/'));
 });
 
 // #################
@@ -89,7 +97,7 @@ gulp.task('styles', ['clean:css'], function () {
 // save them to the assets folder.
 // ===================================================
 
-gulp.task('minify-js', ['clean:js'], function () {
+gulp.task('minify-js', ['clean:js', 'copy-js-libraries'], function () {
   return gulp.src([
       options.source + 'js/*.js'
     ]
@@ -100,6 +108,11 @@ gulp.task('minify-js', ['clean:js'], function () {
       suffix: ".min"
     }))
     .pipe(gulp.dest(options.js));
+});
+
+gulp.task('copy-js-libraries', function () {
+  gulp.src('node_modules/velocity-animate/velocity.min.js')
+    .pipe(gulp.dest('assets/js/vendor/velocity/'));
 });
 
 // ######################
@@ -131,5 +144,5 @@ gulp.task('clean:js', function () {
 // ===================================================
 
 gulp.task('default', function(done) {
-  runSequence(['styles', 'copy-bulma', 'minify-js'], done);
+  runSequence(['styles', 'minify-js'], done);
 });
