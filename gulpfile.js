@@ -26,7 +26,7 @@ var options = {
 };
 
 // Define the node-sass configuration. The includePaths is critical!
-options.scss = {
+options.sass = {
   importer: importOnce,
   includePaths: [
     options.source
@@ -68,7 +68,7 @@ var onError = function(err) {
 
 gulp.task('styles', ['clean:css', 'copy-css-framework'], function () {
   return gulp.src(sassFiles)
-    .pipe($.sass(options.scss).on('error', sass.logError))
+    .pipe($.sass(options.sass).on('error', sass.logError))
     .pipe($.plumber({ errorHandler: onError }) )
     .pipe($.postcss(sassProcessors) )
     .pipe($.rucksack() )
@@ -78,11 +78,8 @@ gulp.task('styles', ['clean:css', 'copy-css-framework'], function () {
 });
 
 gulp.task('copy-css-framework', function () {
-  gulp.src('node_modules/milligram/dist/milligram.min.css')
-    .pipe(gulp.dest('assets/css/vendor/milligram/'));
-
-  gulp.src('node_modules/normalize.css/normalize.css')
-    .pipe(gulp.dest('assets/css/vendor/normalize.css/'));
+  gulp.src('/Users/bram/Sites/bramtenhove/node_modules/bulma/css/bulma.css')
+    .pipe(gulp.dest('assets/css/vendor/bulma/'));
 });
 
 // #################
