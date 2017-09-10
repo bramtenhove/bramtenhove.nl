@@ -1,3 +1,3 @@
 document.addEventListener("DOMContentLoaded", function() {
-  console.log('oi');
+  console.log('oip');
 }, false);
