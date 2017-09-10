@@ -4,7 +4,7 @@
 // Load Gulp plugins
 // ===================================================
 
-var importOnce    = require('node-sass-import-once'),
+var importOnce  = require('node-sass-import-once'),
   path          = require('path'),
   notify        = require("gulp-notify"),
   gulp          = require('gulp'),
@@ -26,11 +26,10 @@ var options = {
 };
 
 // Define the node-sass configuration. The includePaths is critical!
-options.sass = {
+options.scss = {
   importer: importOnce,
   includePaths: [
-    options.source,
-    options.bulma
+    options.source
   ],
   outputStyle: 'compressed'
 };
@@ -69,18 +68,13 @@ var onError = function(err) {
 
 gulp.task('styles', ['clean:css'], function () {
   return gulp.src(sassFiles)
-    .pipe($.sass(options.sass).on('error', sass.logError))
+    .pipe($.sass(options.scss).on('error', sass.logError))
     .pipe($.plumber({ errorHandler: onError }) )
     .pipe($.postcss(sassProcessors) )
     .pipe($.rucksack() )
     .pipe($.rename({dirname: ''}))
     .pipe($.size({showFiles: true}))
     .pipe(gulp.dest(options.css))
-});
-
-gulp.task('copy-bulma', function () {
-  gulp.src('node_modules/bulma/css/bulma.css')
-    .pipe(gulp.dest('assets/css/vendor/'));
 });
 
 // #################
