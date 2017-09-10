@@ -12,6 +12,8 @@ var importOnce  = require('node-sass-import-once'),
   del           = require('del'),
   // gulp-load-plugins will report "undefined" error unless you load gulp-sass manually.
   sass          = require('gulp-sass'),
+  converter     = require('sass-convert'),
+  replace       = require('gulp-replace'),
   postcss       = require('gulp-postcss'),
   autoprefixer  = require('autoprefixer'),
   mqpacker      = require('css-mqpacker'),
@@ -19,6 +21,7 @@ var importOnce  = require('node-sass-import-once'),
 
 var options = {
   root       : __dirname,
+  bulma      : __dirname + '/node_modules/bulma/',
   source     : __dirname + '/source/',
   build      : __dirname + '/assets/',
   css        : __dirname + '/assets/css/',
@@ -37,7 +40,8 @@ options.sass = {
 var sassFiles = [
   options.source + 'styles/**/*.scss',
   // Do not open Sass partials as they will be included as needed.
-  '!' + options.source + 'styles/**/_*.scss'
+  '!' + options.source + 'styles/**/_*.scss',
+  '!' + options.source + 'styles/vendor/**/*.scss'
 ];
 
 var sassProcessors = [
@@ -66,7 +70,7 @@ var onError = function(err) {
 // At the end we check if we should inject new styles in the browser
 // ===================================================
 
-gulp.task('styles', ['clean:css', 'copy-css-framework'], function () {
+gulp.task('styles', ['clean:css'], function () {
   return gulp.src(sassFiles)
     .pipe($.sass(options.sass).on('error', sass.logError))
     .pipe($.plumber({ errorHandler: onError }) )
@@ -77,10 +81,23 @@ gulp.task('styles', ['clean:css', 'copy-css-framework'], function () {
     .pipe(gulp.dest(options.css))
 });
 
-gulp.task('copy-css-framework', function () {
-  gulp.src('/Users/bram/Sites/bramtenhove/node_modules/bulma/css/bulma.css')
-    .pipe(gulp.dest('assets/css/vendor/bulma/'));
+gulp.task('bulma-convert', function () {
+  return gulp.src([options.bulma + '*.+(sass|scss)',
+    options.bulma + 'sass/**/*.+(sass|scss)'
+  ], { base: options.bulma })
+    .pipe(converter({
+      from: 'sass',
+      to: 'scss',
+      rename: true
+    }))
+    .pipe(replace('.sass"', '.scss"'))
+    .pipe(gulp.dest(options.source + 'styles/vendor/bulma'));
 });
+
+// gulp.task('copy-css-framework', function () {
+//   gulp.src('/Users/bram/Sites/bramtenhove/node_modules/bulma/css/bulma.css')
+//     .pipe(gulp.dest('assets/css/vendor/bulma/'));
+// });
 
 // #################
 //
