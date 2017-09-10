@@ -1,9 +1,23 @@
 @import "_defaults";
 @import "styles/vendor/bulma/sass/utilities/_all";
 @import "styles/vendor/bulma/sass/base/_all";
+@import "styles/vendor/bulma/sass/elements/box";
 @import "styles/vendor/bulma/sass/elements/container";
 @import "styles/vendor/bulma/sass/elements/content";
 @import "styles/vendor/bulma/sass/elements/title";
 @import "styles/vendor/bulma/sass/grid/columns";
 @import "styles/vendor/bulma/sass/layout/hero";
 @import "styles/vendor/bulma/sass/layout/section";
+
+
+.title, .subtitle {
+  font-family: $title-family-sans-serif;
+}
+
+.title {
+  font-size: $size-2;
+}
+
+.subtitle {
+  font-size: $size-4;
+}
