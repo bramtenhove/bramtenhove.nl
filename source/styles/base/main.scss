@@ -2,8 +2,10 @@
 @import "styles/vendor/bulma/sass/utilities/_all";
 @import "styles/vendor/bulma/sass/base/_all";
 @import "styles/vendor/bulma/sass/elements/box";
+@import "styles/vendor/bulma/sass/elements/button";
 @import "styles/vendor/bulma/sass/elements/container";
 @import "styles/vendor/bulma/sass/elements/content";
+@import "styles/vendor/bulma/sass/elements/form";
 @import "styles/vendor/bulma/sass/elements/title";
 @import "styles/vendor/bulma/sass/grid/columns";
 @import "styles/vendor/bulma/sass/layout/hero";
@@ -21,4 +23,8 @@
 
 .subtitle {
   font-size: $size-4;
+}
+
+p {
+  font-size: $size-5;
 }

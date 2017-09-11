@@ -3,6 +3,19 @@
 }
 
 #chat {
-  margin-top: -6rem;
+  margin-bottom: 4rem;
   min-height: 50vh;
+
+  @include tablet {
+    margin-top: -6rem;
+  }
+}
+
+#callout {
+  background: url('../img/bgimg.jpg') center center;
+  background-size: cover;
+}
+
+.background-white {
+  background-color: $white;
 }
