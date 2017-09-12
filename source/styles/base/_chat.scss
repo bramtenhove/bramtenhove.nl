@@ -1,0 +1,11 @@
+#chat .columns:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.message {
+  width: fit-content;
+
+  &.visitor {
+    background-color: $primary;
+  }
+}
