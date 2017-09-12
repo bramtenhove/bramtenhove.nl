@@ -4,10 +4,13 @@
 
 #chat {
   margin-bottom: 4rem;
-  min-height: 50vh;
 
   @include tablet {
     margin-top: -6rem;
+  }
+
+  .messages {
+    min-height: 50vh;
   }
 }
 
