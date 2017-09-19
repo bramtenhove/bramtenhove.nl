@@ -83,6 +83,8 @@ function addClass(el, className) {
  */
 document.addEventListener("DOMContentLoaded", function() {
   getSentences();
-  display('ola!');
-  display('tell me more', true);
+  display('OK! So bla bla bla bla.');
+  display('Bla bla bla, bla bla. Bla bla.');
+  display('Very interesting', true);
+  display('...');
 }, false);
