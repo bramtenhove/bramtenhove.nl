@@ -7,6 +7,10 @@
 
   &.visitor {
     background-color: $primary;
+
+    .message-body {
+      color: $white;
+    }
   }
 }
 
