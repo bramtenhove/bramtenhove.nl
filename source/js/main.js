@@ -79,7 +79,60 @@ function addClass(el, className) {
 }
 
 /**
- * This function gets fired upon successful loading of the DOM.
+ * Live event binder.
+ *
+ * @param selector
+ *   The element to bind the event to.
+ * @param eventType
+ *   The type of event.
+ * @param callback
+ *   Handler for the event.
+ * @param context
+ *   Context for the event handler.
+ */
+function addLiveEvent(selector, eventType, callback, context) {
+  (context || document).addEventListener(eventType, function(event) {
+    var nodeList = document.querySelectorAll(selector);
+    // Convert nodeList into matches array.
+    var matches = [];
+    for (var i = 0; i < nodeList.length; ++i) {
+      matches.push(nodeList[i]);
+    }
+    // If there are matches.
+    if (matches) {
+      var element = event.target;
+      var index   = -1;
+      // Traverse up the DOM tree until element can't be found in matches array.
+      while (element && (index = matches.indexOf(element) === -1)) {
+        element = element.parentElement;
+      }
+      // When element matches the selector, apply the callback.
+      if (index > -1) {
+        callback.call(element, event);
+      }
+    }
+  }, false);
+}
+
+/**
+ * Callback for clicks on visitor action button.
+ *
+ * @param el
+ *   The element that is clicked up on.
+ */
+function chatAction(el) {
+  var response = el.getAttribute('data-response');
+  // If we don't have an actual response, stop.
+  if (!response) {
+    return;
+  }
+
+  console.log(response);
+  el.remove();
+}
+
+/**
+ * Main function that gets fired upon successful loading of the DOM.
  */
 function main() {
   getSentences();
@@ -87,6 +140,11 @@ function main() {
   display('Bla bla bla, bla bla. Bla bla.');
   display('Very interesting', true);
   display('...');
+
+  // Bind an event handler to the action buttons for the visitor.
+  addLiveEvent('.responses a', 'click', function(event) {
+    chatAction(event.target);
+  });
 }
 
 // In case the document is already rendered.
