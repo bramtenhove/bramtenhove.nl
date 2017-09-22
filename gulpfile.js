@@ -94,11 +94,6 @@ gulp.task('bulma-convert', function () {
     .pipe(gulp.dest(options.source + 'styles/vendor/bulma'));
 });
 
-// gulp.task('copy-css-framework', function () {
-//   gulp.src('/Users/bram/Sites/bramtenhove/node_modules/bulma/css/bulma.css')
-//     .pipe(gulp.dest('assets/css/vendor/bulma/'));
-// });
-
 // #################
 //
 // Minify JS
@@ -159,4 +154,15 @@ gulp.task('clean:js', function () {
 
 gulp.task('default', function(done) {
   runSequence(['styles', 'minify-js'], done);
+});
+
+// ######################
+//
+// Watching task
+//
+// ######################
+// ===================================================
+gulp.task('watch', function() {
+  gulp.watch(options.source + 'styles/**/*.scss', ['styles']);
+  gulp.watch(options.source + 'js/*.js', ['minify-js']);
 });
