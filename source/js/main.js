@@ -81,10 +81,19 @@ function addClass(el, className) {
 /**
  * This function gets fired upon successful loading of the DOM.
  */
-document.addEventListener("DOMContentLoaded", function() {
+function main() {
   getSentences();
   display('OK! So bla bla bla bla.');
   display('Bla bla bla, bla bla. Bla bla.');
   display('Very interesting', true);
   display('...');
-}, false);
+}
+
+// In case the document is already rendered.
+if (document.readyState!='loading') main();
+// For modern browsers.
+else if (document.addEventListener) document.addEventListener('DOMContentLoaded', main);
+// IE <= 8.
+else document.attachEvent('onreadystatechange', function(){
+  if (document.readyState=='complete') main();
+});

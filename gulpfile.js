@@ -106,7 +106,7 @@ gulp.task('bulma-convert', function () {
 // save them to the assets folder.
 // ===================================================
 
-gulp.task('minify-js', ['clean:js', 'copy-js-libraries'], function () {
+gulp.task('minify-js', ['clean:js'], function () {
   return gulp.src([
       options.source + 'js/*.js'
     ]
@@ -153,7 +153,7 @@ gulp.task('clean:js', function () {
 // ===================================================
 
 gulp.task('default', function(done) {
-  runSequence(['styles', 'minify-js'], done);
+  runSequence(['styles', 'copy-js-libraries', 'minify-js'], done);
 });
 
 // ######################
