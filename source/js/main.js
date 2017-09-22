@@ -7,10 +7,10 @@
  * Main function that gets fired upon successful loading of the DOM.
  */
 function main() {
-  display('OK! So bla bla bla bla.');
-  display('Bla bla bla, bla bla. Bla bla.');
-  display('Very interesting', true);
-  display('...');
+  displayMessage('OK! So bla bla bla bla.');
+  displayMessage('Bla bla bla, bla bla. Bla bla.');
+  displayMessage('Very interesting', true);
+  displayMessage('...');
 
   // Bind an event handler to the action buttons for the visitor.
   addLiveEvent('#chat .responses a', 'click', function(event) {
@@ -31,43 +31,67 @@ function chatAction(el) {
     return;
   }
 
-  // Display the CTA in the chat, then remove it.
-  display(el.innerText, true);
-  el.remove();
+  // Display the CTA in the chat.
+  displayMessage(el.innerText, true);
 
-  // Find the sentence by the CTA key, display it if we found anything.
-  var sentence = getSentenceById(response);
-  if (sentence) {
-    display(getSentenceById(response));
+  // Remove all actions in this set.
+  var currentActions = document.querySelectorAll('#chat .responses a');
+  for (var i = 0, len = currentActions.length; i < len; i++) {
+    currentActions[i].remove();
+  }
+
+  // Find the message by the CTA key.
+  var message = getMessageById(response);
+  if (message) {
+    // Display any messages we can find.
+    for (var i = 0, len = message.messages.length; i < len; i++) {
+      displayMessage(message.messages[i]);
+    }
+
+    // Display any actions that are available.
+    for (var i = 0, len = message.actions.length; i < len; i++) {
+      displayAction(message.actions[i], "response-x");
+    }
   }
 }
 
 /**
- * Retrieves a bunch of sentences.
+ * Retrieves a bunch of messages and actions.
  */
-function getSentences() {
-  var sentences = {
-    0: "hello",
-    1: "bye",
-    2: "awesome",
-    "response-x": "tralala"
+function getMessages() {
+  var data = {
+    0: {
+      "messages": ["hello"],
+      "actions": ["oi", "loi"]
+    },
+    1: {
+      "messages": ["bye"]
+    },
+    "response-x": {
+      "messages": ["awesome"],
+      "actions": ["biep"]
+    },
+    "response-y": {
+      "messages": ["tralla", "blaaaat", "blap"],
+      "actions": ["traag", "oi oi"]
+    }
   };
 
-  return sentences;
+  return data;
 }
 
 /**
- * Retrieves a bunch of sentences.
+ * Retrieve a message by ID.
  *
  * @param id
- *   The id of the sentence.
+ *   The id of the message.
  */
-function getSentenceById(id) {
-  var sentences = getSentences();
+function getMessageById(id) {
+  var messages = getMessages();
 
-  // If we have an ID and it is known in the sentences, return it.
-  if (id && (id in sentences)) {
-    return sentences[id];
+  // If we have an ID and it is known in the messages, return it.
+  if (id && (id in messages)) {
+    return messages[id];
   }
 
   return null;
@@ -81,9 +105,9 @@ function getSentenceById(id) {
  * @param visitor
  *   Boolean indicating if it is a message from the visitor.
  */
-function display(text, visitor) {
+function displayMessage(text, visitor) {
   // Chat container.
-  var chat = document.querySelectorAll('#chat .messages')[0];
+  var chat = document.querySelector('#chat .messages');
 
   var classes = '';
   // Create the message object.
@@ -106,6 +130,28 @@ function display(text, visitor) {
     '</div>';
 
   chat.appendChild(message);
+}
+
+/**
+ * Display an action in the chat.
+ *
+ * @param text
+ *   The text in the the action button.
+ * @param id
+ *   The ID to add as data attribute.
+ */
+function displayAction(text, id) {
+  // Chat responses container.
+  var chat = document.querySelector('#chat .responses .column');
+
+  // Create the action object.
+  var action = document.createElement('a');
+  action.innerHTML = text;
+  addClass(action, 'button');
+  addClass(action, 'is-primary');
+  action.setAttribute('data-response', id);
+
+  chat.appendChild(action);
 }
 
 /**
