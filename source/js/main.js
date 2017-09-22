@@ -45,7 +45,7 @@ function chatAction(el) {
 
     // Display any actions that are available.
     for (var i = 0, len = message.actions.length; i < len; i++) {
-      displayAction(message.actions[i], "response-x");
+      displayAction(message.actions[i].text, message.actions[i].key);
     }
   }
 }
@@ -57,18 +57,26 @@ function getMessages() {
   var data = {
     0: {
       "messages": ["hello"],
-      "actions": ["oi", "loi"]
+      "actions": [
+        {"key": "response-x", "text": "oll"},
+        {"key": "response-y", "text": "loip"}
+      ]
     },
     1: {
       "messages": ["bye"]
     },
     "response-x": {
       "messages": ["awesome"],
-      "actions": ["biep"]
+      "actions": [
+        {"key": 1, "text": "biep"}
+      ]
     },
     "response-y": {
       "messages": ["tralla", "blaaaat", "blap"],
-      "actions": ["traag", "oi oi"]
+      "actions": [
+        {"key": 0, "text": "bsas"},
+        {"key": 1, "text": "oi oi"}
+      ]
     }
   };
 
