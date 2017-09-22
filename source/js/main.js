@@ -4,6 +4,45 @@
  */
 
 /**
+ * Main function that gets fired upon successful loading of the DOM.
+ */
+function main() {
+  display('OK! So bla bla bla bla.');
+  display('Bla bla bla, bla bla. Bla bla.');
+  display('Very interesting', true);
+  display('...');
+
+  // Bind an event handler to the action buttons for the visitor.
+  addLiveEvent('#chat .responses a', 'click', function(event) {
+    chatAction(event.target);
+  });
+}
+
+/**
+ * Callback for clicks on visitor action button.
+ *
+ * @param el
+ *   The element that is clicked up on.
+ */
+function chatAction(el) {
+  var response = el.getAttribute('data-response');
+  // If we don't have an actual response, stop.
+  if (!response) {
+    return;
+  }
+
+  // Display the CTA in the chat, then remove it.
+  display(el.innerText, true);
+  el.remove();
+
+  // Find the sentence by the CTA key, display it if we found anything.
+  var sentence = getSentenceById(response);
+  if (sentence) {
+    display(getSentenceById(response));
+  }
+}
+
+/**
  * Retrieves a bunch of sentences.
  */
 function getSentences() {
@@ -11,8 +50,27 @@ function getSentences() {
     0: "hello",
     1: "bye",
     2: "awesome",
-    3: "tralala"
+    "response-x": "tralala"
+  };
+
+  return sentences;
+}
+
+/**
+ * Retrieves a bunch of sentences.
+ *
+ * @param id
+ *   The id of the sentence.
+ */
+function getSentenceById(id) {
+  var sentences = getSentences();
+
+  // If we have an ID and it is known in the sentences, return it.
+  if (id && (id in sentences)) {
+    return sentences[id];
   }
+
+  return null;
 }
 
 /**
@@ -112,40 +170,6 @@ function addLiveEvent(selector, eventType, callback, context) {
       }
     }
   }, false);
-}
-
-/**
- * Callback for clicks on visitor action button.
- *
- * @param el
- *   The element that is clicked up on.
- */
-function chatAction(el) {
-  var response = el.getAttribute('data-response');
-  // If we don't have an actual response, stop.
-  if (!response) {
-    return;
-  }
-
-  console.log(response + ' - ' + el.innerText);
-  display(el.innerText, true);
-  el.remove();
-}
-
-/**
- * Main function that gets fired upon successful loading of the DOM.
- */
-function main() {
-  getSentences();
-  display('OK! So bla bla bla bla.');
-  display('Bla bla bla, bla bla. Bla bla.');
-  display('Very interesting', true);
-  display('...');
-
-  // Bind an event handler to the action buttons for the visitor.
-  addLiveEvent('#chat .responses a', 'click', function(event) {
-    chatAction(event.target);
-  });
 }
 
 // In case the document is already rendered.
