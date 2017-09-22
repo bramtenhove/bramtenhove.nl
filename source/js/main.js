@@ -7,11 +7,6 @@
  * Main function that gets fired upon successful loading of the DOM.
  */
 function main() {
-  displayMessage('OK! So bla bla bla bla.');
-  displayMessage('Bla bla bla, bla bla. Bla bla.');
-  displayMessage('Very interesting', true);
-  displayMessage('...');
-
   // Bind an event handler to the action buttons for the visitor.
   addLiveEvent('#chat .responses a', 'click', function(event) {
     chatAction(event.target);
