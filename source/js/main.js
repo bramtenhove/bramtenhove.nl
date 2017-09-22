@@ -127,7 +127,8 @@ function chatAction(el) {
     return;
   }
 
-  console.log(response);
+  console.log(response + ' - ' + el.innerText);
+  display(el.innerText, true);
   el.remove();
 }
 
@@ -142,7 +143,7 @@ function main() {
   display('...');
 
   // Bind an event handler to the action buttons for the visitor.
-  addLiveEvent('.responses a', 'click', function(event) {
+  addLiveEvent('#chat .responses a', 'click', function(event) {
     chatAction(event.target);
   });
 }
