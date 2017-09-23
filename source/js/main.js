@@ -35,7 +35,7 @@ function main() {
 /**
  * Callback for clicks on visitor action button.
  *
- * @param el
+ * @param {Element} el
  *   The element that is clicked up on.
  */
 function chatActionEvent(el) {
@@ -62,7 +62,7 @@ function chatActionEvent(el) {
 /**
  * Handles logic with regard to selecting messages.
  *
- * @param response
+ * @param {number|string} response
  *   The response code to match messages to.
  */
 function chatAction(response) {
@@ -97,7 +97,7 @@ function chatAction(response) {
 /**
  * Determines the delay for each character is typed.
  *
- * @param text
+ * @param {string} text
  *   A string with characters.
  * @returns {number}
  *   Delay in milliseconds.
@@ -123,13 +123,13 @@ function determineCharDelay(text) {
 /**
  * Display a message on the screen.
  *
- * @param text
+ * @param {string} text
  *   The text to display.
- * @param visitor
+ * @param {boolean} visitor
  *   Boolean indicating if the message is from the visitor or not.
- * @param charDelay
+ * @param {number} charDelay
  *   The delay in milliseconds before each character should be displayed.
- * @param delay
+ * @param {number} delay
  *   The delay in milliseconds before the next string should be shown.
  */
 function displayMessage(text, visitor, charDelay, delay) {
@@ -176,9 +176,9 @@ function displayMessage(text, visitor, charDelay, delay) {
 /**
  * Display an action in the chat.
  *
- * @param text
+ * @param {string} text
  *   The text in the the action button.
- * @param id
+ * @param {number|string} id
  *   The ID to add as data attribute.
  */
 function displayAction(text, id) {
@@ -198,13 +198,13 @@ function displayAction(text, id) {
 /**
  * Adds a typewriter effect to a string of text.
  *
- * @param el
+ * @param {Element} el
  *   The element to add the effect to.
- * @param text
+ * @param {string} text
  *   The string that is to be typed.
- * @param delay
+ * @param {number} delay
  *   The delay in milliseconds before each character should be displayed.
- * @param n
+ * @param {number} n
  *   The position of the character to display.
  */
 function typeWriter(el, text, delay, n) {
@@ -221,7 +221,7 @@ function typeWriter(el, text, delay, n) {
 /**
  * Retrieve a message by ID.
  *
- * @param id
+ * @param {number|string} id
  *   The id of the message.
  */
 function getMessageById(id) {
@@ -237,6 +237,9 @@ function getMessageById(id) {
 
 /**
  * Retrieves a bunch of messages and actions.
+ *
+ * @returns {Object}
+ *   A list of messages and actions keyed by response ID.
  */
 function getMessages() {
   var data = {
@@ -277,9 +280,9 @@ function getMessages() {
 /**
  * Function to check if an element has a class.
  *
- * @param el
+ * @param {Element} el
  *   The element to check.
- * @param className
+ * @param {string} className
  *   The class name to check.
  *
  * @returns {boolean}
@@ -292,10 +295,10 @@ function hasClass(el, className) {
 /**
  * Adds a class to an element.
  *
- * @param el
+ * @param {Element} el
  *   The element to add the class to.
- * @param className
- *   The classname to add to the element.
+ * @param {string} className
+ *   The class name to add to the element.
  */
 function addClass(el, className) {
   if (el.classList) el.classList.add(className);
@@ -305,7 +308,7 @@ function addClass(el, className) {
 /**
  * Get cookie.
  *
- * @param name
+ * @param {string} name
  *   Name of the cookie
  * @returns {Object|null}
  */
@@ -331,11 +334,11 @@ function getRandomInt(min, max) {
 /**
  * Set a cookie.
  *
- * @param name
+ * @param {string} name
  *   Name of the cookie.
- * @param value
+ * @param {*} value
  *   Contents of the cookie.
- * @param days
+ * @param {number} days
  *   Number of days to keep the cookie.
  */
 function setCookie(name, value, days) {
@@ -347,13 +350,13 @@ function setCookie(name, value, days) {
 /**
  * Live event binder.
  *
- * @param selector
+ * @param {string} selector
  *   The element to bind the event to.
- * @param eventType
+ * @param {string} eventType
  *   The type of event.
- * @param callback
+ * @param {string} callback
  *   Handler for the event.
- * @param context
+ * @param {string} context
  *   Context for the event handler.
  */
 function addLiveEvent(selector, eventType, callback, context) {
