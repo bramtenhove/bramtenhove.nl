@@ -131,6 +131,9 @@ function determineCharDelay(text) {
  *   The delay in milliseconds before each character should be displayed.
  * @param {number} delay
  *   The delay in milliseconds before the next string should be shown.
+ *
+ * @todo Add ability to use emoji's.
+ * @todo Add ability to use links.
  */
 function displayMessage(text, visitor, charDelay, delay) {
   // Chat container.
