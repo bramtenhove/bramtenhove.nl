@@ -38,8 +38,10 @@ function chatActionEvent(el) {
 
   // Remove all actions in this set.
   var currentActions = document.querySelectorAll('#chat .responses a');
-  for (var i = 0, len = currentActions.length; i < len; i++) {
-    currentActions[i].remove();
+  if (currentActions.length > 0) {
+    for (var i = 0, len = currentActions.length; i < len; i++) {
+      currentActions[i].remove();
+    }
   }
 
   chatAction(response);
@@ -68,9 +70,11 @@ function chatAction(response) {
       // Show actions only after last string is displayed.
       if (i == (len - 1)) {
         setTimeout(function() {
-          // Display any actions that are available.
-          for (var i = 0, len = message.actions.length; i < len; i++) {
-            displayAction(message.actions[i].text, message.actions[i].key);
+          if (message.actions) {
+            // Display any actions that are available.
+            for (var i = 0, len = message.actions.length; i < len; i++) {
+              displayAction(message.actions[i].text, message.actions[i].key);
+            }
           }
         }, stringDelay - defaultStringDelay);
       }
