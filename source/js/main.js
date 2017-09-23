@@ -20,7 +20,8 @@ function main() {
     var cookie = getCookie('returns');
     // Visitor was here before, change opening.
     if (cookie) {
-      chatAction(1);
+      // Get a random response.
+      chatAction(getRandomInt(1,1));
     }
     else {
       // Set a cookie to indicate visitor was here before and start with
@@ -308,6 +309,20 @@ function addClass(el, className) {
 function getCookie(name) {
   var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
   return v ? v[2] : null;
+}
+
+/**
+ * Get a random integer between `min` and `max`.
+ *
+ * @param {number} min
+ *   Min number in range.
+ * @param {number} max
+ *   Max number in range.
+ * @return {int}
+ *   A random integer.
+ */
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 /**
