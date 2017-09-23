@@ -255,7 +255,10 @@ function getMessages() {
       ]
     },
     2: {
-      "messages": ["There is nothing more at this moment.", "Try again later."]
+      "messages": ["There is nothing more at this moment.", "Try again later."],
+      "actions": [
+        {"key": 4, "text": "Now what?"}
+      ]
     },
     3: {
       "messages": ["Ok great!"],

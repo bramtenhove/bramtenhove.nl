@@ -35,3 +35,8 @@ p {
   unicode-bidi: bidi-override;
   direction: rtl;
 }
+
+a:hover, a:active {
+  background: $primary;
+  color: $white;
+}
