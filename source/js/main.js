@@ -254,16 +254,16 @@ function getMessages() {
       ]
     },
     2: {
-      "messages": ["nothing more for now."]
+      "messages": ["There is nothing more at this moment.", "Try again later."]
     },
     3: {
-      "messages": ["Awesome"],
+      "messages": ["Ok great!"],
       "actions": [
         {"key": 4, "text": "Now what?"}
       ]
     },
     4: {
-      "messages": ["bye bye", "byeeee!"]
+      "messages": ["Bye bye.", "Byeeee!"]
     }
   };
 
