@@ -39,4 +39,8 @@ p {
 a:hover, a:active {
   background: $primary;
   color: $white;
+
+  &.image {
+    background: none;
+  }
 }
