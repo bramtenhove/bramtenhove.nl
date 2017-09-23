@@ -15,8 +15,19 @@ function main() {
     chatActionEvent(event.target);
   });
 
+  // Start chat.
   setTimeout(function() {
-    chatAction(0);
+    var cookie = getCookie('returns');
+    // Visitor was here before, change opening.
+    if (cookie) {
+      chatAction(1);
+    }
+    else {
+      // Set a cookie to indicate visitor was here before and start with
+      // opening.
+      setCookie('returns', true, 60);
+      chatAction(0);
+    }
   }, defaultStringDelay);
 }
 
@@ -231,24 +242,28 @@ function getMessages() {
     0: {
       "messages": ["Hi! How are you?", "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.", "Want to know more or get in touch?"],
       "actions": [
-        {"key": 1, "text": "Tell me more!"},
-        {"key": 2, "text": "Get in touch!"}
+        {"key": 2, "text": "Tell me more!"},
+        {"key": 3, "text": "Get in touch!"}
       ]
     },
     1: {
-      "messages": ["I've been working on the web for years now."],
+      "messages": ["Nice to see you again!", "Do you still want to know some more? Or get in touch?"],
       "actions": [
-        {"key": 3, "text": "tralala"}
+        {"key": 2, "text": "Tell me some more"},
+        {"key": 3, "text": "Get in touch!"}
       ]
     },
     2: {
-      "messages": ["bye"]
+      "messages": ["nothing more for now."]
     },
     3: {
-      "messages": ["awesome"],
+      "messages": ["Awesome"],
       "actions": [
-        {"key": 1, "text": "biep"}
+        {"key": 4, "text": "Now what?"}
       ]
+    },
+    4: {
+      "messages": ["bye bye", "byeeee!"]
     }
   };
 
@@ -281,6 +296,34 @@ function hasClass(el, className) {
 function addClass(el, className) {
   if (el.classList) el.classList.add(className);
   else if (!hasClass(el, className)) el.className += ' ' + className;
+}
+
+/**
+ * Get cookie.
+ *
+ * @param name
+ *   Name of the cookie
+ * @returns {Object|null}
+ */
+function getCookie(name) {
+  var v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+  return v ? v[2] : null;
+}
+
+/**
+ * Set a cookie.
+ *
+ * @param name
+ *   Name of the cookie.
+ * @param value
+ *   Contents of the cookie.
+ * @param days
+ *   Number of days to keep the cookie.
+ */
+function setCookie(name, value, days) {
+  var d = new Date;
+  d.setTime(d.getTime() + 24*60*60*1000*days);
+  document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
 }
 
 /**
