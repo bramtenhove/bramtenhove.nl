@@ -3,6 +3,8 @@
  * @author Bram ten Hove
  */
 
+var defaultStringDelay = 350;
+
 /**
  * Main function that gets fired upon successful loading of the DOM.
  */
@@ -27,7 +29,7 @@ function chatAction(el) {
   }
 
   // Display the CTA in the chat.
-  displayMessage(el.innerText, true);
+  // displayMessage(el.innerText, true);
 
   // Remove all actions in this set.
   var currentActions = document.querySelectorAll('#chat .responses a');
@@ -38,15 +40,52 @@ function chatAction(el) {
   // Find the message by the CTA key.
   var message = getMessageById(response);
   if (message) {
+    var stringDelay = defaultStringDelay;
     // Display any messages we can find.
     for (var i = 0, len = message.messages.length; i < len; i++) {
-      displayMessage(message.messages[i]);
-    }
+      var string = message.messages[i];
+      var charDelay = determineCharDelay(string);
+      displayMessage(string, charDelay, stringDelay);
 
-    // Display any actions that are available.
-    for (var i = 0, len = message.actions.length; i < len; i++) {
-      displayAction(message.actions[i].text, message.actions[i].key);
+      // Update string delay.
+      stringDelay += (message.messages[i].length * charDelay) + defaultStringDelay;
+
+      // Show actions only after last string is displayed.
+      if (i == (len - 1)) {
+        setTimeout(function() {
+          // Display any actions that are available.
+          for (var i = 0, len = message.actions.length; i < len; i++) {
+            displayAction(message.actions[i].text, message.actions[i].key);
+          }
+        }, stringDelay - defaultStringDelay);
+      }
     }
+  }
+}
+
+/**
+ * Determines the delay for each character is typed.
+ *
+ * @param text
+ *   A string with characters.
+ * @returns {number}
+ *   Delay in milliseconds.
+ */
+function determineCharDelay(text) {
+  if (text.length > 80) {
+    return 5;
+  }
+  else if (text.length > 50) {
+    return 10;
+  }
+  else if (text.length > 30) {
+    return 15;
+  }
+  else if (text.length > 15) {
+    return 25;
+  }
+  else {
+    return 40;
   }
 }
 
@@ -72,7 +111,7 @@ function getMessages() {
       ]
     },
     "response-y": {
-      "messages": ["tralla", "blaaaat", "blap"],
+      "messages": ["Hi! How are you?", "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.", "blap"],
       "actions": [
         {"key": 0, "text": "bsas"},
         {"key": 1, "text": "oi oi"}
@@ -105,34 +144,64 @@ function getMessageById(id) {
  *
  * @param text
  *   The text to display.
- * @param visitor
- *   Boolean indicating if it is a message from the visitor.
+ * @param charDelay
+ *   The delay in milliseconds before each character should be displayed.
+ * @param delay
+ *   The delay in milliseconds before the next string should be shown.
  */
-function displayMessage(text, visitor) {
-  // Chat container.
-  var chat = document.querySelector('#chat .messages');
+function displayMessage(text, charDelay, delay) {
+  setTimeout(function() {
+    // Chat container.
+    var chat = document.querySelector('#chat .messages');
 
-  var classes = '';
-  // Create the message object.
-  var message = document.createElement('div');
-  addClass(message, 'columns');
+    var classes = '';
+    // Create the message object.
+    var message = document.createElement('div');
+    addClass(message, 'columns');
 
-  // If it is an text by the visitor, add some more classes.
-  if (visitor) {
-    addClass(message, 'is-clearfix');
-    classes = ' visitor is-pulled-right';
+    // // If it is an text by the visitor, add some more classes.
+    // if (visitor) {
+    //   addClass(message, 'is-clearfix');
+    //   classes = ' visitor is-pulled-right';
+    // }
+
+    // The HTML containing the text to display.
+    message.innerHTML = '<div class="column">' +
+      '<article class="message' + classes + '">' +
+      '<div class="message-body">' +
+      '...' +
+      '</div>' +
+      '</article>' +
+      '</div>';
+
+    chat.appendChild(message);
+
+    // Add typewriter effect on the body text.
+    typeWriter(message.querySelector('.message-body'), text, charDelay, 0);
+  }, delay);
+}
+
+/**
+ * Adds a typewriter effect to a string of text.
+ *
+ * @param el
+ *   The element to add the effect to.
+ * @param text
+ *   The string that is to be typed.
+ * @param delay
+ *   The delay in milliseconds before each character should be displayed.
+ * @param n
+ *   The position of the character to display.
+ */
+function typeWriter(el, text, delay, n) {
+  if (n < (text.length)) {
+    el.innerHTML = text.substring(0, n+1);
+    n++;
+    // Add the delay.
+    setTimeout(function() {
+      typeWriter(el, text, delay, n)
+    }, delay);
   }
-
-  // The HTML containing the text to display.
-  message.innerHTML = '<div class="column">' +
-    '<article class="message' + classes + '">' +
-    '<div class="message-body">' +
-    text +
-    '</div>' +
-    '</article>' +
-    '</div>';
-
-  chat.appendChild(message);
 }
 
 /**

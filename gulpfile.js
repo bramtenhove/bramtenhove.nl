@@ -120,8 +120,8 @@ gulp.task('minify-js', ['clean:js'], function () {
 });
 
 gulp.task('copy-js-libraries', function () {
-  gulp.src('node_modules/velocity-animate/velocity.min.js')
-    .pipe(gulp.dest('assets/js/vendor/velocity/'));
+  // gulp.src('node_modules/velocity-animate/velocity.min.js')
+  //   .pipe(gulp.dest('assets/js/vendor/velocity/'));
 });
 
 // ######################
