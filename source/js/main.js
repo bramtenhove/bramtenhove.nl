@@ -16,7 +16,7 @@ function main() {
   });
 
   setTimeout(function() {
-    chatAction('response-y');
+    chatAction(0);
   }, defaultStringDelay);
 }
 
@@ -109,56 +109,6 @@ function determineCharDelay(text) {
 }
 
 /**
- * Retrieves a bunch of messages and actions.
- */
-function getMessages() {
-  var data = {
-    0: {
-      "messages": ["hello"],
-      "actions": [
-        {"key": "response-x", "text": "oll"},
-        {"key": "response-y", "text": "loip"}
-      ]
-    },
-    1: {
-      "messages": ["bye"]
-    },
-    "response-x": {
-      "messages": ["awesome"],
-      "actions": [
-        {"key": 1, "text": "biep"}
-      ]
-    },
-    "response-y": {
-      "messages": ["Hi! How are you?", "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.", "blap"],
-      "actions": [
-        {"key": 0, "text": "bsas"},
-        {"key": 1, "text": "oi oi"}
-      ]
-    }
-  };
-
-  return data;
-}
-
-/**
- * Retrieve a message by ID.
- *
- * @param id
- *   The id of the message.
- */
-function getMessageById(id) {
-  var messages = getMessages();
-
-  // If we have an ID and it is known in the messages, return it.
-  if (id && (id in messages)) {
-    return messages[id];
-  }
-
-  return null;
-}
-
-/**
  * Display a message on the screen.
  *
  * @param text
@@ -212,6 +162,28 @@ function displayMessage(text, visitor, charDelay, delay) {
 }
 
 /**
+ * Display an action in the chat.
+ *
+ * @param text
+ *   The text in the the action button.
+ * @param id
+ *   The ID to add as data attribute.
+ */
+function displayAction(text, id) {
+  // Chat responses container.
+  var chat = document.querySelector('#chat .responses .column');
+
+  // Create the action object.
+  var action = document.createElement('a');
+  action.innerHTML = text;
+  addClass(action, 'button');
+  addClass(action, 'is-primary');
+  action.setAttribute('data-response', id);
+
+  chat.appendChild(action);
+}
+
+/**
  * Adds a typewriter effect to a string of text.
  *
  * @param el
@@ -235,25 +207,52 @@ function typeWriter(el, text, delay, n) {
 }
 
 /**
- * Display an action in the chat.
+ * Retrieve a message by ID.
  *
- * @param text
- *   The text in the the action button.
  * @param id
- *   The ID to add as data attribute.
+ *   The id of the message.
  */
-function displayAction(text, id) {
-  // Chat responses container.
-  var chat = document.querySelector('#chat .responses .column');
+function getMessageById(id) {
+  var messages = getMessages();
 
-  // Create the action object.
-  var action = document.createElement('a');
-  action.innerHTML = text;
-  addClass(action, 'button');
-  addClass(action, 'is-primary');
-  action.setAttribute('data-response', id);
+  // If we have an ID and it is known in the messages, return it.
+  if (id != null && (id in messages)) {
+    return messages[id];
+  }
 
-  chat.appendChild(action);
+  return null;
+}
+
+/**
+ * Retrieves a bunch of messages and actions.
+ */
+function getMessages() {
+  var data = {
+    0: {
+      "messages": ["Hi! How are you?", "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.", "Want to know more or get in touch?"],
+      "actions": [
+        {"key": 1, "text": "Tell me more!"},
+        {"key": 2, "text": "Get in touch!"}
+      ]
+    },
+    1: {
+      "messages": ["I've been working on the web for years now."],
+      "actions": [
+        {"key": 3, "text": "tralala"}
+      ]
+    },
+    2: {
+      "messages": ["bye"]
+    },
+    3: {
+      "messages": ["awesome"],
+      "actions": [
+        {"key": 1, "text": "biep"}
+      ]
+    }
+  };
+
+  return data;
 }
 
 /**
