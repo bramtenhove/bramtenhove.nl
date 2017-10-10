@@ -5,10 +5,24 @@
 .message {
   width: fit-content;
 
+  @include tablet {
+    max-width: 80%;
+  }
+
   &.visitor {
     background-color: $primary;
 
     .message-body {
+      color: $white;
+    }
+  }
+
+  &.is-pulled-right {
+    margin-bottom: 0.75rem;
+  }
+
+  .message-body {
+    a:hover, a:active {
       color: $white;
     }
   }

@@ -36,7 +36,6 @@
     "path": "^0.12.7",
     "run-sequence": "^1.2.2",
     "sass-convert": "^0.5.2",
-    "velocity-animate": "^1.5.0",
     "bulma": "^0.5.1"
   }
 }

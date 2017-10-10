@@ -104,7 +104,7 @@ function chatAction(response) {
  */
 function determineCharDelay(text) {
   if (text.length > 80) {
-    return 5;
+    return 10;
   }
   else if (text.length > 50) {
     return 10;
@@ -257,23 +257,23 @@ function getMessages() {
       "messages": ["Nice to see you again!", "Do you still want to know some more? Or get in touch?"],
       "actions": [
         {"key": 2, "text": "Tell me some more"},
-        {"key": 3, "text": "Get in touch!"}
+        {"key": 4, "text": "Get in touch!"}
       ]
     },
     2: {
-      "messages": ["There is nothing more at this moment.", "Try again later."],
+      "messages": ["Cool!", "I've been building websites since I was still quite young. I liked it so much that I went to the university to learn more.", "Now that I am a professional web developer I focus my work on making sites useful and user-friendly."],
       "actions": [
-        {"key": 4, "text": "Now what?"}
+        {"key": 3, "text": "Do you have some examples?"}
       ]
     },
     3: {
-      "messages": ["Ok great!"],
+      "messages": ["But of course.", "- <a href=\"https://greenwire.greenpeace.org\" rel=\"nofollow\">Greenpeace Greenwire</a> is an award winning international, multi-language community platform<br>- <a href=\"https://www.ben.nl\" rel=\"nofollow\">Ben</a> is a well-known telecom provider in The Netherlands for which I've done most of the architecture<br>- <a href=\"https://www.getopensocial.com\" rel=\"nofollow\">Open Social</a> is open-source community software, I'm part of its core team"],
       "actions": [
         {"key": 4, "text": "Now what?"}
       ]
     },
     4: {
-      "messages": ["Bye bye.", "Byeeee!"]
+      "messages": ["Ok, let's talk! Send me a message at <a class=\"obfuscate\">ln.evohnetmarb@olleh</a>.", "If you want, you can also check out my <a href=\"https://github.com/bramtenhove\">GitHub</a> page."]
     }
   };
 
