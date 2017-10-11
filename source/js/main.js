@@ -209,6 +209,8 @@ function displayAction(text, id) {
  *   The delay in milliseconds before each character should be displayed.
  * @param {number} n
  *   The position of the character to display.
+ *
+ * @todo make it so that HTML tags do not interfere with typewriter text.
  */
 function typeWriter(el, text, delay, n) {
   if (n < (text.length)) {
@@ -247,33 +249,51 @@ function getMessageById(id) {
 function getMessages() {
   var data = {
     0: {
-      "messages": ["Hi! How are you?", "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.", "Want to know more or get in touch?"],
+      "messages": [
+        "Hi! How are you?",
+        "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.",
+        "Want to know more or get in touch?"
+      ],
       "actions": [
         {"key": 2, "text": "Tell me more!"},
         {"key": 3, "text": "Get in touch!"}
       ]
     },
     1: {
-      "messages": ["Nice to see you again!", "Do you still want to know some more? Or get in touch?"],
+      "messages": [
+        "Nice to see you again!",
+        "Do you still want to know some more? Or get in touch?"
+      ],
       "actions": [
         {"key": 2, "text": "Tell me some more"},
         {"key": 4, "text": "Get in touch!"}
       ]
     },
     2: {
-      "messages": ["Cool!", "I've been building websites since I was still quite young. I liked it so much that I went to the university to learn more.", "Now that I am a professional web developer I focus my work on making sites useful and user-friendly."],
+      "messages": [
+        "Cool!", "I've been building websites since I was still quite young. I liked it so much that I went to the university to learn more.",
+        "Now that I am a professional web developer I focus my work on making sites useful and user-friendly."
+      ],
       "actions": [
         {"key": 3, "text": "Do you have some examples?"}
       ]
     },
     3: {
-      "messages": ["But of course.", "- <a href=\"https://greenwire.greenpeace.org\" rel=\"nofollow\">Greenpeace Greenwire</a> is an award winning international, multi-language community platform<br>- <a href=\"https://www.ben.nl\" rel=\"nofollow\">Ben</a> is a well-known telecom provider in The Netherlands for which I've done most of the architecture<br>- <a href=\"https://www.getopensocial.com\" rel=\"nofollow\">Open Social</a> is open-source community software, I'm part of its core team"],
+      "messages": [
+        "But of course.",
+        "- <strong><a href=\"https://greenwire.greenpeace.org\" rel=\"nofollow\">Greenpeace Greenwire</a></strong> is an award winning international, multi-language community platform<br>" +
+        "- <strong><a href=\"https://www.ben.nl\" rel=\"nofollow\">Ben</a></strong> is a well-known telecom provider in The Netherlands for which I've done most of the architecture<br>" +
+        "- <strong><a href=\"https://www.getopensocial.com\" rel=\"nofollow\">Open Social</a></strong> is open-source community software, I'm part of its core team"
+      ],
       "actions": [
         {"key": 4, "text": "Now what?"}
       ]
     },
     4: {
-      "messages": ["Ok, let's talk! Send me a message at <a class=\"obfuscate\">ln.evohnetmarb@olleh</a>.", "If you want, you can also check out my <a href=\"https://github.com/bramtenhove\">GitHub</a> page."]
+      "messages": [
+        "Ok, let's talk! Send me a message at <a class=\"obfuscate\">ln.evohnetmarb@olleh</a>.",
+        "If you want, you can also check out my <a href=\"https://github.com/bramtenhove\">GitHub</a> page."
+      ]
     }
   };
 
