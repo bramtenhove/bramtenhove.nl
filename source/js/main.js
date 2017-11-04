@@ -291,7 +291,7 @@ function getMessages() {
     },
     4: {
       "messages": [
-        "Ok, let's talk! Send me a message at <a class=\"obfuscate\">ln.evohnetmarb@olleh</a>.",
+        "Ok, let's talk! Send me a message at <a>hello@bramtenhove.nl</a>.",
         "If you want, you can also check out my <a href=\"https://github.com/bramtenhove\">GitHub</a> page."
       ]
     }
