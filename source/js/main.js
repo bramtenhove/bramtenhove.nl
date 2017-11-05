@@ -217,22 +217,39 @@ function displayMessage(text, visitor, delay) {
 
       // Loop through the textsplits.
       for (var key in textsplit) {
+        var el = message.querySelector('.message-body');
+
         // Check if string is one that should be a link.
         var link = getLinkOfString(textsplit[key]);
 
         // If we have a link we should first add an <a> tag with the link to the
         // main element and ensure the text is put in that new tag.
-        if (link) {
-          var el = message.querySelector('.message-body');
+        if (link !== false) {
+          // Create the <a> tag.
           var a = document.createElement('a');
-          a.href = link;
+
+          // Only add the href if we need it to.
+          if (link !== 'none') {
+            a.href = link;
+          }
+
+          // Add the tag to the main element.
           el.appendChild(a);
 
+          // We will now use the tag as the element we want to have our text
+          // added to.
           el = a;
         }
         else {
-          // Defaults to normal element.
-          var el = message.querySelector('.message-body');
+          // Create a new <span> element.
+          var span = document.createElement('span');
+
+          // Add the tag to the main element.
+          el.appendChild(span);
+
+          // We will now use the tag as the element we want to have our text
+          // added to.
+          el = span;
         }
 
         // If this is not the first part of the sentence, add a delay before we
@@ -330,7 +347,8 @@ function getLinkOfString(text) {
     'Greenpeace Greenwire': 'https://greenwire.greenpeace.org',
     'Ben': 'https://www.ben.nl',
     'Open Social': 'https://www.getopensocial.com',
-    'GitHub': 'https://github.com/bramtenhove'
+    'GitHub': 'https://github.com/bramtenhove',
+    'hello@bramtenhove.nl': ' '
   };
 
   // Text is in the array, return the link.
