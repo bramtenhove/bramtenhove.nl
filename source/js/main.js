@@ -21,7 +21,7 @@ function main() {
     // Visitor was here before, change opening.
     if (cookie) {
       // Get a random response.
-      chatAction(getRandomInt(3,3));
+      chatAction(getRandomInt(1,1));
     }
     else {
       // Set a cookie to indicate visitor was here before and start with
@@ -210,14 +210,31 @@ function displayMessage(text, visitor, delay) {
       var charDelay = determineCharDelay(fullText);
 
       // Select the element to append the text too, empty it first.
-      var el = message.querySelector('.message-body');
-      el.innerHTML = '';
+      message.querySelector('.message-body').innerHTML = '';
 
       // We start with a delay of 0, we'll update it later.
       var partDelay = 0;
 
       // Loop through the textsplits.
       for (var key in textsplit) {
+        // Check if string is one that should be a link.
+        var link = getLinkOfString(textsplit[key]);
+
+        // If we have a link we should first add an <a> tag with the link to the
+        // main element and ensure the text is put in that new tag.
+        if (link) {
+          var el = message.querySelector('.message-body');
+          var a = document.createElement('a');
+          a.href = link;
+          el.appendChild(a);
+
+          el = a;
+        }
+        else {
+          // Defaults to normal element.
+          var el = message.querySelector('.message-body');
+        }
+
         // If this is not the first part of the sentence, add a delay before we
         // show it.
         if (key > 0) {
@@ -247,8 +264,6 @@ function displayMessage(text, visitor, delay) {
  *   The delay in milliseconds before each character should be displayed.
  * @param {number} n
  *   The position of the character to display.
- *
- * @todo make it so that HTML tags do not interfere with typewriter text.
  */
 function typeWriter(el, text, delay, n) {
   if (n < (text.length)) {
@@ -298,6 +313,33 @@ function getMessageById(id) {
   }
 
   return null;
+}
+
+/**
+ * Checks if a link can be found for the given text.
+ *
+ * @param {string} text
+ *   The text to find the link for.
+ *
+ * @returns {string|boolean}
+ *   The link if it could be found or false if it couldn't.
+ */
+function getLinkOfString(text) {
+  // List of text and their links.
+  var links = {
+    'Greenpeace Greenwire': 'https://greenwire.greenpeace.org',
+    'Ben': 'https://www.ben.nl',
+    'Open Social': 'https://www.getopensocial.com',
+    'GitHub': 'https://github.com/bramtenhove'
+  };
+
+  // Text is in the array, return the link.
+  if (links[text]) {
+    return links[text];
+  }
+
+  // No link? Return false.
+  return false;
 }
 
 /**
