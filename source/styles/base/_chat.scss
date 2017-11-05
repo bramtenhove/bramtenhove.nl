@@ -22,6 +22,10 @@
   }
 
   .message-body {
+    a {
+      font-weight: bold;
+    }
+
     a:hover, a:active {
       color: $white;
     }

@@ -73,11 +73,15 @@ function chatAction(response) {
     // Display any messages we can find.
     for (var i = 0, len = message.messages.length; i < len; i++) {
       var string = message.messages[i];
-      var charDelay = determineCharDelay(string);
-      displayMessage(string, false, charDelay, stringDelay);
+      displayMessage(string, false, stringDelay);
+      var charDelay = 0;
+      var textsplit = splitText(string);
+      for (var key in textsplit) {
+        charDelay += textsplit[key].length * determineCharDelay(textsplit[key]);
+      }
 
       // Update string delay.
-      stringDelay += (message.messages[i].length * charDelay) + defaultStringDelay;
+      stringDelay += charDelay + defaultStringDelay;
 
       // Show actions only after last string is displayed.
       if (i == (len - 1)) {
@@ -88,10 +92,23 @@ function chatAction(response) {
               displayAction(message.actions[i].text, message.actions[i].key);
             }
           }
-        }, stringDelay - defaultStringDelay);
+        }, stringDelay);
       }
     }
   }
+}
+
+/**
+ * Split text into several pieces, determined by <a> tags.
+ *
+ * @param {string} text
+ *   The text to split.
+ *
+ * @returns {Array|*}
+ *   An array containing the split text.
+ */
+function splitText(text) {
+  return text.split(/<a\b[^>]*>(.*?)<\/a>/);
 }
 
 /**
@@ -127,15 +144,13 @@ function determineCharDelay(text) {
  *   The text to display.
  * @param {boolean} visitor
  *   Boolean indicating if the message is from the visitor or not.
- * @param {number} charDelay
- *   The delay in milliseconds before each character should be displayed.
  * @param {number} delay
  *   The delay in milliseconds before the next string should be shown.
  *
  * @todo Add ability to use emoji's.
  * @todo Add ability to use links.
  */
-function displayMessage(text, visitor, charDelay, delay) {
+function displayMessage(text, visitor, delay) {
   // Chat container.
   var chat = document.querySelector('#chat .messages');
 
@@ -167,12 +182,62 @@ function displayMessage(text, visitor, charDelay, delay) {
     }, delay - textIndicatorTime);
 
     setTimeout(function () {
-      // Add typewriter effect on the body text.
-      typeWriter(message.querySelector('.message-body'), text, charDelay, 0);
+      // Split text into several pieces!
+      // Add ability to typeWriter function to insert into an <a> tag.
+      // console.log(text);
+      var textsplit = splitText(text);
+      // console.log(textsplit);
+      var el = message.querySelector('.message-body');
+      el.innerHTML = '';
+      var partDelay = 0;
+      var charDelay = 0;
+      for (var key in textsplit) {
+        // console.log(textsplit[key]);
+
+        // if (key > 0) {
+        //   for (var i = key; i > 0; i--) {
+        //     console.log(key + ' - ' + i);
+        //     partDelay = partDelay + (textsplit[i - 1].length * charDelay);
+        //   }
+        //   console.log(partDelay);
+        // }
+
+        charDelay = determineCharDelay(textsplit[key]);
+        partDelay += textsplit[key].length * charDelay;
+
+        setTimeout(typeWriter, partDelay, el, textsplit[key], charDelay, 0);
+      }
     }, delay);
   }
   else {
     chat.appendChild(message);
+  }
+}
+
+/**
+ * Adds a typewriter effect to a string of text.
+ *
+ * @param {Element} el
+ *   The element to add the effect to.
+ * @param {string} text
+ *   The string that is to be typed.
+ * @param {number} delay
+ *   The delay in milliseconds before each character should be displayed.
+ * @param {number} n
+ *   The position of the character to display.
+ *
+ * @todo make it so that HTML tags do not interfere with typewriter text.
+ */
+function typeWriter(el, text, delay, n) {
+  // console.log(text);
+
+  if (n < (text.length)) {
+    el.innerHTML += text.charAt(n);
+    n++;
+    // Add the delay.
+    setTimeout(function() {
+      typeWriter(el, text, delay, n)
+    }, delay);
   }
 }
 
@@ -196,31 +261,6 @@ function displayAction(text, id) {
   action.setAttribute('data-response', id);
 
   chat.appendChild(action);
-}
-
-/**
- * Adds a typewriter effect to a string of text.
- *
- * @param {Element} el
- *   The element to add the effect to.
- * @param {string} text
- *   The string that is to be typed.
- * @param {number} delay
- *   The delay in milliseconds before each character should be displayed.
- * @param {number} n
- *   The position of the character to display.
- *
- * @todo make it so that HTML tags do not interfere with typewriter text.
- */
-function typeWriter(el, text, delay, n) {
-  if (n < (text.length)) {
-    el.innerHTML = text.substring(0, n+1);
-    n++;
-    // Add the delay.
-    setTimeout(function() {
-      typeWriter(el, text, delay, n)
-    }, delay);
-  }
 }
 
 /**
@@ -281,9 +321,9 @@ function getMessages() {
     3: {
       "messages": [
         "But of course.",
-        "- <strong><a href=\"https://greenwire.greenpeace.org\" rel=\"nofollow\">Greenpeace Greenwire</a></strong> is an award winning international, multi-language community platform<br>" +
-        "- <strong><a href=\"https://www.ben.nl\" rel=\"nofollow\">Ben</a></strong> is a well-known telecom provider in The Netherlands for which I've done most of the architecture<br>" +
-        "- <strong><a href=\"https://www.getopensocial.com\" rel=\"nofollow\">Open Social</a></strong> is open-source community software, I'm part of its core team"
+        "- <a href=\"https://greenwire.greenpeace.org\" rel=\"nofollow\">Greenpeace Greenwire</a> is an award winning international, multi-language community platform<br>" +
+        "- <a href=\"https://www.ben.nl\" rel=\"nofollow\">Ben</a> is a well-known telecom provider in The Netherlands for which I've done most of the architecture<br>" +
+        "- <a href=\"https://www.getopensocial.com\" rel=\"nofollow\">Open Social</a> is open-source community software, I'm part of its core team"
       ],
       "actions": [
         {"key": 4, "text": "Now what?"}
