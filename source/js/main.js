@@ -381,7 +381,7 @@ function getMessages() {
       ],
       "actions": [
         {"key": 1, "text": "Tell me more"},
-        {"key": 2, "text": "Let's get in touch!"}
+        {"key": 3, "text": "Let's get in touch!"}
       ]
     },
     1: {
