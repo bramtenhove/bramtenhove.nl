@@ -21,7 +21,7 @@ function main() {
     // Visitor was here before, change opening.
     if (cookie) {
       // Get a random response.
-      chatAction(getRandomInt(1,1));
+      chatAction(getRandomInt(20,22));
     }
     else {
       // Set a cookie to indicate visitor was here before and start with
@@ -373,50 +373,77 @@ function getMessages() {
     0: {
       "messages": [
         "Hi! How are you?",
-        "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands",
+        "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.",
         "Want to know more or get in touch?"
       ],
       "actions": [
-        {"key": 2, "text": "Tell me more!"},
-        {"key": 3, "text": "Get in touch!"}
+        {"key": 1, "text": "Tell me more"},
+        {"key": 2, "text": "Let's get in touch!"}
       ]
     },
     1: {
-      "messages": [
-        "Nice to see you again! 👋",
-        "Do you still want to know some more? Or get in touch?"
-      ],
-      "actions": [
-        {"key": 2, "text": "Tell me some more"},
-        {"key": 4, "text": "Get in touch!"}
-      ]
-    },
-    2: {
       "messages": [
         "Cool!", "I've been building websites since I was still quite young. I liked it so much that I went to the university to learn more.",
         "Now that I am a professional web developer I focus my work on making sites useful and user-friendly."
       ],
       "actions": [
-        {"key": 3, "text": "Do you have some examples?"}
+        {"key": 2, "text": "Do you have some examples?"}
       ]
     },
-    3: {
+    2: {
       "messages": [
         "But of course.",
         "<a>Greenpeace Greenwire</a> is an award winning international, multi-language community platform",
         "<a>Ben</a> is a well-known telecom provider in The Netherlands for which I've done most of the architecture",
-        "<a>Open Social</a> is open-source community software, I'm part of its core team 🌻"
+        "<a>Open Social</a> is open-source community software, I'm part of its core team 🌻",
+        "Would you like to get in touch?"
       ],
       "actions": [
-        {"key": 4, "text": "Now what?"}
+        {"key": 3, "text": "Sure!"},
+        {"key": 4, "text": "I'm fine, thanks"}
       ]
     },
-    4: {
+    3: {
       "messages": [
         "Ok, let's talk! Send me a message at <a>hello@bramtenhove.nl</a>.",
         "If you want, you can also visit my <a>LinkedIn</a> or check out my <a>GitHub</a> page."
       ]
-    }
+    },
+    4: {
+      "messages": [
+        "Alright. Feel free to scroll down to read a bit more 👇",
+      ]
+    },
+    20: {
+      "messages": [
+        "Nice to see you again! 👋",
+        "Do you want to know some more? Or would you like to get in touch now?"
+      ],
+      "actions": [
+        {"key": 1, "text": "Tell me some more"},
+        {"key": 3, "text": "Let's get in touch!"}
+      ]
+    },
+    21: {
+      "messages": [
+        "Welcome back! 😎",
+        "Do you want to know some more? Or would you like to get in touch now?"
+      ],
+      "actions": [
+        {"key": 1, "text": "Tell me some more"},
+        {"key": 3, "text": "Let's get in touch!"}
+      ]
+    },
+    22: {
+      "messages": [
+        "Hi there!",
+        "Do you want to know some more? Or would you like to get in touch now?"
+      ],
+      "actions": [
+        {"key": 1, "text": "Tell me some more"},
+        {"key": 3, "text": "Let's get in touch!"}
+      ]
+    },
   };
 
   return data;
