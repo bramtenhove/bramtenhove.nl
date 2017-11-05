@@ -231,6 +231,7 @@ function displayMessage(text, visitor, delay) {
           // Only add the href if we need it to.
           if (link !== 'none') {
             a.href = link;
+            a.rel = 'nofollow';
           }
 
           // Add the tag to the main element.
@@ -348,7 +349,7 @@ function getLinkOfString(text) {
     'Ben': 'https://www.ben.nl',
     'Open Social': 'https://www.getopensocial.com',
     'GitHub': 'https://github.com/bramtenhove',
-    'hello@bramtenhove.nl': ' '
+    'hello@bramtenhove.nl': 'none'
   };
 
   // Text is in the array, return the link.
