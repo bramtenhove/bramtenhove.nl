@@ -348,6 +348,7 @@ function getLinkOfString(text) {
     'Greenpeace Greenwire': 'https://greenwire.greenpeace.org',
     'Ben': 'https://www.ben.nl',
     'Open Social': 'https://www.getopensocial.com',
+    'LinkedIn': 'https://www.linkedin.com/in/bramth',
     'GitHub': 'https://github.com/bramtenhove',
     'hello@bramtenhove.nl': 'none'
   };
@@ -372,7 +373,7 @@ function getMessages() {
     0: {
       "messages": [
         "Hi! How are you?",
-        "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.",
+        "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands",
         "Want to know more or get in touch?"
       ],
       "actions": [
@@ -382,7 +383,7 @@ function getMessages() {
     },
     1: {
       "messages": [
-        "Nice to see you again!",
+        "Nice to see you again! 👋",
         "Do you still want to know some more? Or get in touch?"
       ],
       "actions": [
@@ -404,7 +405,7 @@ function getMessages() {
         "But of course.",
         "<a>Greenpeace Greenwire</a> is an award winning international, multi-language community platform",
         "<a>Ben</a> is a well-known telecom provider in The Netherlands for which I've done most of the architecture",
-        "<a>Open Social</a> is open-source community software, I'm part of its core team"
+        "<a>Open Social</a> is open-source community software, I'm part of its core team 🌻"
       ],
       "actions": [
         {"key": 4, "text": "Now what?"}
@@ -413,7 +414,7 @@ function getMessages() {
     4: {
       "messages": [
         "Ok, let's talk! Send me a message at <a>hello@bramtenhove.nl</a>.",
-        "If you want, you can also check out my <a>GitHub</a> page."
+        "If you want, you can also visit my <a>LinkedIn</a> or check out my <a>GitHub</a> page."
       ]
     }
   };
