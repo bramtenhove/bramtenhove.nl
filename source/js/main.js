@@ -21,7 +21,7 @@ function main() {
     // Visitor was here before, change opening.
     if (cookie) {
       // Get a random response.
-      chatAction(getRandomInt(1,1));
+      chatAction(getRandomInt(3,3));
     }
     else {
       // Set a cookie to indicate visitor was here before and start with
@@ -74,8 +74,11 @@ function chatAction(response) {
     for (var i = 0, len = message.messages.length; i < len; i++) {
       var string = message.messages[i];
       displayMessage(string, false, stringDelay);
+
       var charDelay = 0;
       var textsplit = splitText(string);
+
+      // Update the charDelay.
       for (var key in textsplit) {
         charDelay += textsplit[key].length * determineCharDelay(textsplit[key]);
       }
@@ -108,7 +111,7 @@ function chatAction(response) {
  *   An array containing the split text.
  */
 function splitText(text) {
-  return text.split(/<a\b[^>]*>(.*?)<\/a>/);
+  return text.split(/<a>(.*?)<\/a>/);
 }
 
 /**
@@ -124,7 +127,7 @@ function determineCharDelay(text) {
     return 10;
   }
   else if (text.length > 50) {
-    return 10;
+    return 12;
   }
   else if (text.length > 30) {
     return 15;
@@ -176,41 +179,55 @@ function displayMessage(text, visitor, delay) {
     '</article>' +
     '</div>';
 
-  if (!visitor) {
+  // If visitor message, show it immediately.
+  if (visitor) {
+    chat.appendChild(message);
+  }
+  else {
+    // Add the typing indicator.
     setTimeout(function () {
       chat.appendChild(message);
     }, delay - textIndicatorTime);
 
+    // Bot message, so we should make it a typewriter effect.
     setTimeout(function () {
       // Split text into several pieces!
       // Add ability to typeWriter function to insert into an <a> tag.
-      // console.log(text);
       var textsplit = splitText(text);
-      // console.log(textsplit);
+
+      // In some cases the first element is empty, remove it so text typing is
+      // smoother.
+      if (textsplit[0] == '') {
+        textsplit.splice(0, 1);
+      }
+
+      // Select the element to append the text too, empty it first.
       var el = message.querySelector('.message-body');
       el.innerHTML = '';
+
+      // We start with a delay of 0, we'll update it later.
       var partDelay = 0;
-      var charDelay = 0;
+
+      // Loop through the textsplits.
       for (var key in textsplit) {
-        // console.log(textsplit[key]);
+        // Determine the character delay.
+        var charDelay = determineCharDelay(textsplit[key]);
 
-        // if (key > 0) {
-        //   for (var i = key; i > 0; i--) {
-        //     console.log(key + ' - ' + i);
-        //     partDelay = partDelay + (textsplit[i - 1].length * charDelay);
-        //   }
-        //   console.log(partDelay);
-        // }
+        // If this is not the first part of the sentence, add a delay before we
+        // show it.
+        if (key > 0) {
+          partDelay += charDelay;
+          setTimeout(typeWriter, partDelay, el, textsplit[key], charDelay, 0);
+        }
+        else {
+          // First part, show it immediately.
+          typeWriter(el, textsplit[key], charDelay, 0);
+        }
 
-        charDelay = determineCharDelay(textsplit[key]);
-        partDelay += textsplit[key].length * charDelay;
-
-        setTimeout(typeWriter, partDelay, el, textsplit[key], charDelay, 0);
+        // Update the part delay.
+        partDelay += (textsplit[key].length * charDelay) + charDelay;
       }
     }, delay);
-  }
-  else {
-    chat.appendChild(message);
   }
 }
 
@@ -229,8 +246,6 @@ function displayMessage(text, visitor, delay) {
  * @todo make it so that HTML tags do not interfere with typewriter text.
  */
 function typeWriter(el, text, delay, n) {
-  // console.log(text);
-
   if (n < (text.length)) {
     el.innerHTML += text.charAt(n);
     n++;
@@ -321,9 +336,9 @@ function getMessages() {
     3: {
       "messages": [
         "But of course.",
-        "- <a href=\"https://greenwire.greenpeace.org\" rel=\"nofollow\">Greenpeace Greenwire</a> is an award winning international, multi-language community platform<br>" +
-        "- <a href=\"https://www.ben.nl\" rel=\"nofollow\">Ben</a> is a well-known telecom provider in The Netherlands for which I've done most of the architecture<br>" +
-        "- <a href=\"https://www.getopensocial.com\" rel=\"nofollow\">Open Social</a> is open-source community software, I'm part of its core team"
+        "<a>Greenpeace Greenwire</a> is an award winning international, multi-language community platform",
+        "<a>Ben</a> is a well-known telecom provider in The Netherlands for which I've done most of the architecture",
+        "<a>Open Social</a> is open-source community software, I'm part of its core team"
       ],
       "actions": [
         {"key": 4, "text": "Now what?"}
@@ -332,7 +347,7 @@ function getMessages() {
     4: {
       "messages": [
         "Ok, let's talk! Send me a message at <a>hello@bramtenhove.nl</a>.",
-        "If you want, you can also check out my <a href=\"https://github.com/bramtenhove\">GitHub</a> page."
+        "If you want, you can also check out my <a>GitHub</a> page."
       ]
     }
   };
@@ -433,7 +448,7 @@ function addLiveEvent(selector, eventType, callback, context) {
     // If there are matches.
     if (matches) {
       var element = event.target;
-      var index   = -1;
+      var index = -1;
       // Traverse up the DOM tree until element can't be found in matches array.
       while (element && (index = matches.indexOf(element) === -1)) {
         element = element.parentElement;
