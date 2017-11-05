@@ -13,6 +13,9 @@ function main() {
   // Bind an event handler to the action buttons for the visitor.
   addLiveEvent('#chat .responses a', 'click', function(event) {
     chatActionEvent(event.target);
+
+    // Remove the scroll-indicator.
+    document.getElementById('chat-scroll-indicator').outerHTML = '';
   });
 
   // Start chat.
@@ -128,10 +131,10 @@ function determineCharDelay(text) {
     return 10;
   }
   else if (text.length > 50) {
-    return 12;
+    return 15;
   }
   else if (text.length > 30) {
-    return 15;
+    return 20;
   }
   else if (text.length > 15) {
     return 25;
@@ -411,7 +414,7 @@ function getMessages() {
     },
     4: {
       "messages": [
-        "Alright. Feel free to scroll down to read a bit more 👇",
+        "Alright. If you want you can still scroll down to read a bit more 👇",
       ]
     },
     20: {
