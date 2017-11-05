@@ -75,16 +75,17 @@ function chatAction(response) {
       var string = message.messages[i];
       displayMessage(string, false, stringDelay);
 
-      var charDelay = 0;
+      // Calculate the charDelay by splitting the text and putting it back
+      // together without the <a> tags.
       var textsplit = splitText(string);
-
-      // Update the charDelay.
+      var fullText = '';
       for (var key in textsplit) {
-        charDelay += textsplit[key].length * determineCharDelay(textsplit[key]);
+        fullText = fullText.concat(textsplit[key]);
       }
+      var charDelay = determineCharDelay(fullText);
 
       // Update string delay.
-      stringDelay += charDelay + defaultStringDelay;
+      stringDelay += (fullText.length * charDelay) + defaultStringDelay;
 
       // Show actions only after last string is displayed.
       if (i == (len - 1)) {
@@ -201,6 +202,13 @@ function displayMessage(text, visitor, delay) {
         textsplit.splice(0, 1);
       }
 
+      // Determine charDelay by putting the string back together.
+      var fullText = '';
+      for (var key in textsplit) {
+        fullText = fullText.concat(textsplit[key]);
+      }
+      var charDelay = determineCharDelay(fullText);
+
       // Select the element to append the text too, empty it first.
       var el = message.querySelector('.message-body');
       el.innerHTML = '';
@@ -210,9 +218,6 @@ function displayMessage(text, visitor, delay) {
 
       // Loop through the textsplits.
       for (var key in textsplit) {
-        // Determine the character delay.
-        var charDelay = determineCharDelay(textsplit[key]);
-
         // If this is not the first part of the sentence, add a delay before we
         // show it.
         if (key > 0) {
