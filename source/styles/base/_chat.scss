@@ -44,4 +44,13 @@
 #chat-scroll-indicator {
   font-style: italic;
   color: $grey;
+
+  &.moved {
+    position: absolute;
+    bottom: -30px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
 }

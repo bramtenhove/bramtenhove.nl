@@ -14,8 +14,8 @@ function main() {
   addLiveEvent('#chat .responses a', 'click', function(event) {
     chatActionEvent(event.target);
 
-    // Remove the scroll-indicator.
-    document.getElementById('chat-scroll-indicator').outerHTML = '';
+    // Move the element down the chat box.
+    addClass(document.getElementById('chat-scroll-indicator'), 'moved');
   });
 
   // Start chat.
