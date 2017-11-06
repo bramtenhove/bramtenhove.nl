@@ -51,5 +51,7 @@
     }
   ],
   "start_url": "index.html",
-  "theme_color": "#107FC9"
+  "display": "fullscreen",
+  "theme_color": "#107FC9",
+  "background_color": "#F6F7Fb"
 }
