@@ -120,8 +120,8 @@ gulp.task('minify-js', ['clean:js'], function () {
 });
 
 gulp.task('copy-js-libraries', function () {
-  // gulp.src('node_modules/scrollmagic/scrollmagic/minified/ScrollMagic.min.js')
-  //   .pipe(gulp.dest('assets/js/vendor/scrollmagic/'));
+  gulp.src('node_modules/smooth-scroll/dist/js/smooth-scroll.min.js')
+    .pipe(gulp.dest('assets/js/vendor/smooth-scroll/'));
 });
 
 // ######################

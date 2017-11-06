@@ -10,6 +10,12 @@ var defaultStringDelay = 750;
  * Main function that gets fired upon successful loading of the DOM.
  */
 function main() {
+  // Add smooth scroll support for internal links.
+  new SmoothScroll('a[href*="#"]', {
+    speed: 350,
+    easing: 'easeInQuad'
+  });
+
   // Bind an event handler to the action buttons for the visitor.
   addLiveEvent('#chat .responses a', 'click', function(event) {
     chatActionEvent(event.target);
@@ -399,10 +405,10 @@ function getMessages() {
         "<a>Greenpeace Greenwire</a> is an award winning international, multi-language community platform",
         "<a>Ben</a> is a well-known telecom provider in The Netherlands for which I've done most of the architecture",
         "<a>Open Social</a> is open-source community software, I'm part of its core team 🌻",
-        "Would you like to get in touch?"
+        "If you want you we can have a cup of coffee and talk about what I can do for you."
       ],
       "actions": [
-        {"key": 3, "text": "Sure!"},
+        {"key": 3, "text": "Sure, let's do it!"},
         {"key": 4, "text": "I'm fine, thanks"}
       ]
     },

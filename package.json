@@ -37,5 +37,8 @@
     "run-sequence": "^1.2.2",
     "sass-convert": "^0.5.2",
     "bulma": "^0.5.1"
+  },
+  "dependencies": {
+    "smooth-scroll": "^12.1.5"
   }
 }
