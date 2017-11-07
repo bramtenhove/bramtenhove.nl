@@ -92,6 +92,11 @@ Options +FollowSymLinks
   RewriteCond %{REQUEST_FILENAME}.php -f
   RewriteCond %{REQUEST_URI} !/$
   RewriteRule (.*) $1\.php [L]
+
+  # Add redirects for old website.
+  Redirect 301 /about /
+  Redirect 301 /contact /
+  RewriteRule ^blogs(.*)$ / [L,R=301]
 </IfModule>
 
 <IfModule mod_gzip.c>
