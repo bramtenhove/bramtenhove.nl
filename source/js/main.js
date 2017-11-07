@@ -405,7 +405,7 @@ function getMessages() {
         "I helped create an award winning, international, multi-language community platform, <a>Greenpeace Greenwire</a>.",
         "I've done most of the architecture for <a>Ben</a>, a telecom provider in The Netherlands with a large user base and a well-visited website.",
         "<a>Open Social</a> is open-source community software, I'm part of its core team 🌻",
-        "If you want you we can have a cup of coffee and talk about what I can do for you."
+        "If you want we can have a cup of coffee and talk about what I can do for you."
       ],
       "actions": [
         {"key": 3, "text": "Sure, let's do it!"},
