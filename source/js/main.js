@@ -402,8 +402,8 @@ function getMessages() {
     2: {
       "messages": [
         "But of course.",
-        "I helped create <a>Greenpeace Greenwire</a>. An award winning international, multi-language community platform.",
-        "I've done most of the architecture for <a>Ben</a>, a well-known telecom provider in The Netherlands with a large user base and a lot of page views.",
+        "I helped create an award winning, international, multi-language community platform, <a>Greenpeace Greenwire</a>.",
+        "I've done most of the architecture for <a>Ben</a>, a telecom provider in The Netherlands with a large user base and a well-visited website.",
         "<a>Open Social</a> is open-source community software, I'm part of its core team 🌻",
         "If you want you we can have a cup of coffee and talk about what I can do for you."
       ],
