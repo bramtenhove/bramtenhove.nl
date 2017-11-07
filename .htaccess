@@ -67,9 +67,6 @@ Options +FollowSymLinks
   RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   RewriteRule ^ http%{ENV:protossl}://%1%{REQUEST_URI} [L,R=301]
 
-  RewriteCond %{REQUEST_URI} !=/index.html
-  RewriteRule ^ /index.html [R=301]
-
   # Remove the .html extension.
   RewriteCond %{THE_REQUEST} ^GET\ (.*)\.html\ HTTP
   RewriteRule (.*)\.html$ $1 [R=301]
