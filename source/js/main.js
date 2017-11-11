@@ -392,7 +392,8 @@ function getMessages() {
     },
     1: {
       "messages": [
-        "Cool!", "I've been building websites since I was still quite young. I liked it so much that I went to the university to learn more.",
+        "Cool!",
+        "I've been building websites since I was still quite young. I liked it so much that I went to the university to learn more.",
         "Now that I am a professional web developer I focus my work on making sites useful and user-friendly."
       ],
       "actions": [
