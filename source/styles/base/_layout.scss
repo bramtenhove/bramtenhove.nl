@@ -15,8 +15,17 @@
 }
 
 #callout {
-  background: url('../img/bgimg.jpg') center center no-repeat;
-  background-size: cover;
+  display: none;
+
+  @include tablet {
+    display: block;
+    background: url('../img/bgimg-small.jpg') center center no-repeat;
+    background-size: cover;
+  }
+
+  @include desktop {
+    background: url('../img/bgimg.jpg') center center no-repeat;
+  }
 
   .container {
     @include desktop {
