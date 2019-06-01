@@ -25,7 +25,8 @@ var options = {
   source     : __dirname + '/source/',
   build      : __dirname + '/assets/',
   css        : __dirname + '/assets/css/',
-  js         : __dirname + '/assets/js/'
+  js         : __dirname + '/assets/js/',
+  sw         : __dirname + '/'
 };
 
 // Define the node-sass configuration. The includePaths is critical!
@@ -111,12 +112,20 @@ gulp.task('minify-js', ['clean:js'], function () {
       options.source + 'js/*.js'
     ]
   )
-    .pipe($.uglify())
-    .pipe($.flatten())
-    .pipe($.rename({
-      suffix: ".min"
-    }))
-    .pipe(gulp.dest(options.js));
+  .pipe($.uglify())
+  .pipe($.flatten())
+  .pipe(gulp.dest(options.js));
+});
+
+// Service Worker.
+gulp.task('minify-sw', function () {
+  return gulp.src([
+      options.source + 'serviceworker.js'
+    ]
+  )
+  .pipe($.uglify())
+  .pipe($.flatten())
+  .pipe(gulp.dest(options.sw));
 });
 
 gulp.task('copy-js-libraries', function () {
@@ -153,7 +162,7 @@ gulp.task('clean:js', function () {
 // ===================================================
 
 gulp.task('default', function(done) {
-  runSequence(['styles', 'copy-js-libraries', 'minify-js'], done);
+  runSequence(['styles', 'copy-js-libraries', 'minify-js', 'minify-sw'], done);
 });
 
 // ######################
@@ -165,4 +174,5 @@ gulp.task('default', function(done) {
 gulp.task('watch', function() {
   gulp.watch(options.source + 'styles/**/*.scss', ['styles']);
   gulp.watch(options.source + 'js/*.js', ['minify-js']);
+  gulp.watch(options.source + 'serviceworker.js', ['minify-sw']);
 });
