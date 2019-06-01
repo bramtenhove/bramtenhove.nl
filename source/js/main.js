@@ -3,8 +3,8 @@
  * @author Bram ten Hove
  */
 
-var textIndicatorTime = 500;
-var defaultStringDelay = 750;
+const textIndicatorTime = 500;
+const defaultStringDelay = 750;
 
 /**
  * Main function that gets fired upon successful loading of the DOM.
