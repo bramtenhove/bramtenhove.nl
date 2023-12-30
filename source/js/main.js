@@ -382,7 +382,7 @@ function getMessages() {
     0: {
       "messages": [
         "Hi! How are you?",
-        "I’m Bram ten Hove, a web developer living in Hengelo, the Netherlands.",
+        "I’m Bram ten Hove, a CTO living in Hengelo, the Netherlands.",
         "Want to know more or get in touch?"
       ],
       "actions": [
@@ -394,7 +394,7 @@ function getMessages() {
       "messages": [
         "Cool!",
         "I've been building websites since I was still quite young. I liked it so much that I went to the university to learn more.",
-        "Now that I am a professional web developer I focus my work on making sites useful and user-friendly."
+        "Now that I am a CTO I focus on helping organizations create and manage high performing teams that produce high quality software."
       ],
       "actions": [
         {"key": 2, "text": "Do you have some examples?"}
@@ -403,9 +403,9 @@ function getMessages() {
     2: {
       "messages": [
         "But of course.",
+        "I'm the CTO at <a>Open Social</a>, which is open-source community software that helps organizations communicate and manage their member base.",
         "I helped create an award winning, international, multi-language community platform, <a>Greenpeace Greenwire</a>.",
         "I've done most of the architecture for <a>Ben</a>, a telecom provider in The Netherlands with a large user base and a well-visited website.",
-        "<a>Open Social</a> is open-source community software, I'm part of its core team 🌻",
         "If you want we can have a cup of coffee and talk about what I can do for you."
       ],
       "actions": [
