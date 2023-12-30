@@ -18,7 +18,7 @@
     "gulp-notify": "^2.2.0",
     "gulp-plumber": "^1.1.0",
     "gulp-postcss": "^6.2.0",
-    "gulp-prompt": "^0.2.0",
+    "gulp-prompt": "^1.2.0",
     "gulp-pug": "^3.0.4",
     "gulp-pug-inheritance": "^0.2.1",
     "gulp-rename": "^1.2.2",
